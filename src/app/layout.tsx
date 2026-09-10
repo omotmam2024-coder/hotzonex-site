@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
 
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
+          <WhatsAppButton />
         </div>
       </body>
     </html>
