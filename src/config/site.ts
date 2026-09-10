@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Hotzonex",
   description:
     "Hotzonex provides WiFi hotspots, home and office internet, Starlink installation and activation, MikroTik configuration and hotspot setup, network support, and website/software development in Juba, South Sudan.",
-  url: "https://hotzonex.com",
+  url: "https://hotzonex-site.vercel.app",
   contact: {
     phone: "+211 924 904 216",
     email: "omotmam2024@gmail.com",
