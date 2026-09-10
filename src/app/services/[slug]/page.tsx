@@ -32,10 +32,19 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
         <span>{service.title}</span>
       </div>
 
-      <article className="rounded-3xl border border-border bg-card p-8 shadow-sm">
-        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">{service.highlight}</p>
-        <h1 className="mt-3 text-4xl font-black text-foreground">{service.title}</h1>
-        <p className="mt-4 max-w-3xl text-lg text-muted-foreground">{service.summary}</p>
+      <article className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
+        {service.image ? (
+          <img
+            src={service.image}
+            alt={service.imageAlt ?? service.title}
+            className="h-72 w-full object-cover"
+          />
+        ) : null}
+
+        <div className="p-8">
+          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">{service.highlight}</p>
+          <h1 className="mt-3 text-4xl font-black text-foreground">{service.title}</h1>
+          <p className="mt-4 max-w-3xl text-lg text-muted-foreground">{service.summary}</p>
 
         <div className="mt-10 grid gap-8 lg:grid-cols-2">
           <div>
@@ -72,6 +81,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
               </Button>
             </div>
           </div>
+        </div>
         </div>
       </article>
     </div>

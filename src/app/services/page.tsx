@@ -38,28 +38,38 @@ export default function ServicesPage() {
 
       <section className="mt-12 grid gap-6 lg:grid-cols-2">
         {siteConfig.services.map((service) => (
-          <article key={service.slug} className="rounded-3xl border border-border bg-card p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">{service.highlight}</p>
-            <h2 className="mt-3 text-2xl font-black text-foreground">{service.title}</h2>
-            <p className="mt-3 text-sm leading-6 text-muted-foreground">{service.summary}</p>
+          <article key={service.slug} className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
+            {service.image ? (
+              <img
+                src={service.image}
+                alt={service.imageAlt ?? service.title}
+                className="h-52 w-full object-cover"
+              />
+            ) : null}
 
-            <div className="mt-6 space-y-3">
-              <p className="text-sm font-semibold text-foreground">Who it is for</p>
-              <p className="text-sm text-muted-foreground">{service.audience}</p>
+            <div className="p-6">
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-primary">{service.highlight}</p>
+              <h2 className="mt-3 text-2xl font-black text-foreground">{service.title}</h2>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">{service.summary}</p>
+
+              <div className="mt-6 space-y-3">
+                <p className="text-sm font-semibold text-foreground">Who it is for</p>
+                <p className="text-sm text-muted-foreground">{service.audience}</p>
+              </div>
+
+              <div className="mt-6">
+                <p className="text-sm font-semibold text-foreground">What is included</p>
+                <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+                  {service.included.map((item) => (
+                    <li key={item}>• {item}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <Link href={`/services/${service.slug}`} className="mt-8 inline-flex items-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground">
+                View service details
+              </Link>
             </div>
-
-            <div className="mt-6">
-              <p className="text-sm font-semibold text-foreground">What is included</p>
-              <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-                {service.included.map((item) => (
-                  <li key={item}>• {item}</li>
-                ))}
-              </ul>
-            </div>
-
-            <Link href={`/services/${service.slug}`} className="mt-8 inline-flex items-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground">
-              View service details
-            </Link>
           </article>
         ))}
       </section>
