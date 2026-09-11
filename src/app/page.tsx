@@ -215,7 +215,8 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="mb-10 max-w-2xl">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-300">Why choose us</p>
-            <h2 className="mt-2 text-3xl font-black">Reliable support from a company that understands local internet realities.</h2>
+            {/* Explicit colour: the global heading style would otherwise paint it dark on this dark section. */}
+            <h2 className="mt-2 text-3xl font-black text-white">Reliable support from a company that understands local internet realities.</h2>
           </div>
 
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
