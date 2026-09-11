@@ -14,6 +14,7 @@ export const siteConfig = {
   },
   // The three offices, their hours, Wi-Fi networks and starting prices, as
   // published in the Hotzonex Wi-Fi Customer Service Guide (doc/Hotzonex_policy.pdf).
+  // mapUrl opens Google Maps directions to each office's exact pin.
   locations: [
     {
       slug: "gorom",
@@ -25,7 +26,7 @@ export const siteConfig = {
       vouchersFrom: "1,000 SSP",
       services: ["WiFi hotspot vouchers", "Customer support"],
       address: "Gorom Home Office, Juba, South Sudan",
-      mapUrl: "https://www.google.com/maps/search/?api=1&query=Gorom+Home+Office+Juba+South+Sudan",
+      mapUrl: "https://www.google.com/maps/dir/?api=1&destination=4.727359974105239%2C31.593812834356974",
     },
     {
       slug: "head-office",
@@ -37,7 +38,7 @@ export const siteConfig = {
       vouchersFrom: "1,500 SSP",
       services: ["WiFi hotspot vouchers", "Home & office internet", "IT support", "Starlink and MikroTik quotes"],
       address: "Jebel-Iraq Head Office, Juba, South Sudan",
-      mapUrl: "https://www.google.com/maps/search/?api=1&query=Jebel-Iraq+Head+Office+Juba+South+Sudan",
+      mapUrl: "https://www.google.com/maps/dir/?api=1&destination=4.53042878534354%2C31.320665765976663",
     },
     {
       slug: "sub-office",
@@ -49,7 +50,7 @@ export const siteConfig = {
       vouchersFrom: "2,000 SSP",
       services: ["WiFi hotspot vouchers (LITE, Popular, Power and Max)", "Home & office internet", "IT support"],
       address: "Jebel-Iraq Sub Office, Juba, South Sudan",
-      mapUrl: "https://www.google.com/maps/search/?api=1&query=Jebel-Iraq+Sub+Office+Juba+South+Sudan",
+      mapUrl: "https://www.google.com/maps/dir/?api=1&destination=4.53042878534354%2C31.320665765976663",
     },
   ],
   services: [
