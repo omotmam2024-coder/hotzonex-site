@@ -10,7 +10,7 @@ export const blogPosts = [
     readingTime: "4 min read",
     content: [
       "Hotspot vouchers are the quickest way to access prepaid internet at one of our public locations. Customers can ask for support at the site and receive help with connecting their device.",
-      "A typical hotspot visit starts with choosing the right voucher for the amount of time or data you need. Once connected, customers can use the internet with the same simplicity as other public WiFi services.",
+      "A typical hotspot visit starts with choosing a voucher that matches how long you will be at the location — every voucher is unlimited for its period and counts down from activation. Once connected, customers can use the internet with the same simplicity as other public WiFi services.",
       "If you have trouble connecting, the best next step is to ask for onsite help. Our team can assist with the most common setup issues and help you get online quickly.",
     ],
   },

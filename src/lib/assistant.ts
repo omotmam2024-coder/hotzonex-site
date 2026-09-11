@@ -1,5 +1,6 @@
 import { siteConfig } from "@/config/site";
 import knowledge from "@/generated/policy-knowledge.json";
+import { priceTables } from "@/lib/guide";
 
 /**
  * Answers customer questions from the Hotzonex Customer Service Guide
@@ -365,16 +366,6 @@ const SMALL_TALK: Array<{ pattern: RegExp; reply: () => string }> = [
 // without an office must not be answered from whichever price list ranks first.
 // ---------------------------------------------------------------------------
 
-/** Price lists: tables whose header row has a "Price" column. */
-const PRICE_TABLES = knowledge.chunks
-  .filter((chunk) => chunk.kind === "prices")
-  .map((chunk) => {
-    const [header, ...rows] = chunk.text.split("\n");
-    const columns = header.split(" · ");
-    return { chunk, rows, priceColumn: columns.findIndex((column) => /^price$/i.test(column)) };
-  })
-  .filter((table) => table.priceColumn > 0);
-
 const OFFICE_TERMS = new Set(tokenize("gorom jebel iraq head sub"));
 const GENERIC_PRICE_TERMS = new Set(tokenize("price voucher vouchers package packages ssp"));
 
@@ -386,12 +377,11 @@ function comparePrices(terms: string[]) {
   if (specific.length === 0) return null;
 
   const lines: string[] = [];
-  for (const { chunk, rows, priceColumn } of PRICE_TABLES) {
-    for (const row of rows) {
-      const rowTerms = new Set(tokenize(row));
+  for (const { office, rows, priceColumn } of priceTables) {
+    for (const cells of rows) {
+      const rowTerms = new Set(tokenize(cells.join(" ")));
       if (!specific.every((term) => rowTerms.has(term))) continue;
-      const cells = row.split(" · ");
-      lines.push(`• ${chunk.title} — ${cells[0]}: ${cells[priceColumn]}`);
+      lines.push(`• ${office} — ${cells[0]}: ${cells[priceColumn]}`);
     }
   }
   if (lines.length === 0) return null;
@@ -428,7 +418,7 @@ export function getAssistantAnswer(question: string): AssistantReply {
     if (comparison) {
       return {
         answer: comparison,
-        source: guideLabel(PRICE_TABLES[0]?.chunk.section ?? "Voucher prices"),
+        source: guideLabel(priceTables[0]?.section ?? "Voucher prices"),
         suggestions: suggestionsAfter(ranked, null),
       };
     }

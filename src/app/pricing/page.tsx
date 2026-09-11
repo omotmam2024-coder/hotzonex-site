@@ -1,13 +1,23 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
+import { guideChunks, guideName, lowestVoucherPrice, priceTables } from "@/lib/guide";
 
 export const metadata: Metadata = {
   title: "Pricing",
-  description: "View Hotzonex hotspot voucher pricing and request a quote for installation, support, and development work.",
+  description:
+    "Hotzonex Wi-Fi voucher prices for Gorom Home Office, Jebel-Iraq Head Office and Jebel-Iraq Sub Office, plus quotes for installation, support and development work.",
 };
+
+/** "Understanding the prices" boxes and callouts from the guide, shown under the price lists. */
+const priceNotes = guideChunks.filter((chunk) => chunk.kind === "prices" && chunk.heading === "Understanding the prices");
+
+function officeHours(office: string) {
+  return siteConfig.locations.find((location) => location.name === office)?.hours;
+}
 
 export default function PricingPage() {
   return (
@@ -15,61 +25,110 @@ export default function PricingPage() {
       <section className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
         <div className="max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">Pricing</p>
-          <h1 className="mt-3 text-4xl font-black text-foreground sm:text-5xl">Hotspot packages are listed below. Starlink and MikroTik quotes are handled at the Head Office.</h1>
+          <h1 className="mt-3 text-4xl font-black text-foreground sm:text-5xl">Wi-Fi voucher prices at each Hotzonex office.</h1>
           <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground">
-            The hotspot voucher packages listed here are for reference, while Starlink installation and MikroTik configuration should be discussed directly at the Head Office for the current quote and setup details.
+            All vouchers are prepaid, unlimited for their period and work on one device at a time. Each office has its
+            own networks and its own price list, and a voucher works only at the office where it was bought.
           </p>
         </div>
 
         <div className="relative overflow-hidden rounded-[2rem] border border-border bg-card shadow-lg shadow-slate-200/60">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
-            alt="African pricing and service support"
+            alt="Customers using Wi-Fi at a Hotzonex office"
+            width={1200}
+            height={800}
+            sizes="(max-width: 1024px) 100vw, 45vw"
+            loading="eager"
             className="h-[320px] w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/15 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 p-6">
             <div className="rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur-sm">
-              <p className="text-xs uppercase tracking-[0.18em] text-slate-200">Current pricing</p>
-              <p className="mt-2 text-xl font-black text-white">Ask at the Head Office</p>
+              <p className="text-xs uppercase tracking-[0.18em] text-slate-200">Vouchers from</p>
+              <p className="mt-2 text-xl font-black text-white">{lowestVoucherPrice ?? "See price lists below"}</p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="mt-12 grid gap-6 lg:grid-cols-3">
-        {siteConfig.pricing.packages.map((pkg) => (
-          <article
-            key={pkg.name}
-            className={pkg.recommended ? "rounded-3xl border-2 border-primary bg-primary/5 p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg" : "rounded-3xl border border-border bg-card p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg"}
-          >
-            {pkg.recommended && (
-              <div className="mb-4 inline-flex rounded-full bg-primary px-2 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-primary-foreground">
-                Recommended
-              </div>
-            )}
-            <h2 className="text-2xl font-black text-foreground">{pkg.name}</h2>
-            <p className="mt-3 text-sm text-muted-foreground">{pkg.description}</p>
-            <div className="mt-6 flex items-end gap-2">
-              {pkg.price.toLowerCase().includes("ask") ? (
-                <span className="text-3xl font-black text-foreground">{pkg.price}</span>
-              ) : (
-                <>
-                  <span className="text-4xl font-black text-foreground">{siteConfig.pricing.currencyLabel}</span>
-                  <span className="text-4xl font-black text-foreground">{pkg.price}</span>
-                </>
-              )}
+      <section className="mt-12 grid gap-6 lg:grid-cols-3" aria-label="Voucher prices by office">
+        {priceTables.map((table) => (
+          <article key={table.office} className="flex flex-col rounded-3xl border border-border bg-card p-6 shadow-sm">
+            <h2 className="text-2xl font-black text-foreground">{table.office}</h2>
+            {officeHours(table.office) && <p className="mt-1 text-sm text-muted-foreground">Open {officeHours(table.office)}</p>}
+
+            <div className="mt-5 overflow-x-auto">
+              <table className="w-full text-left text-sm">
+                <thead>
+                  <tr className="border-b border-border text-xs uppercase tracking-[0.12em] text-muted-foreground">
+                    <th scope="col" className="py-2 pr-3 font-semibold">{table.columns[0]}</th>
+                    <th scope="col" className="py-2 pr-3 text-right font-semibold">{table.columns[table.priceColumn]}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {table.rows.map((row) => {
+                    // Remaining columns ("Cost per hour", "Good for") as one line: "563 SSP per hour · A full working day".
+                    const detail = row
+                      .map((cell, index) => {
+                        if (index === 0 || index === table.priceColumn || !cell) return null;
+                        const column = table.columns[index] ?? "";
+                        return /^cost per /i.test(column) ? `${cell} ${column.replace(/^cost /i, "").toLowerCase()}` : cell;
+                      })
+                      .filter(Boolean)
+                      .join(" · ");
+                    const bestValue = /best value/i.test(row.join(" "));
+                    return (
+                      <tr key={row.join("|")} className={bestValue ? "border-b border-border bg-primary/5" : "border-b border-border"}>
+                        <td className="py-3 pr-3 align-top">
+                          <span className="font-semibold text-foreground">{row[0]}</span>
+                          {detail && <span className="mt-0.5 block text-xs text-muted-foreground">{detail}</span>}
+                        </td>
+                        <td className="whitespace-nowrap py-3 text-right align-top font-bold text-foreground">
+                          {row[table.priceColumn]}
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
             </div>
-            <ul className="mt-6 space-y-2 text-sm text-muted-foreground">
-              {pkg.features.map((feature) => (
-                <li key={feature}>• {feature}</li>
-              ))}
-            </ul>
-            <Button className="mt-8 w-full" asChild>
-              <Link href="/contact">Request this package</Link>
-            </Button>
+
+            {table.notes.map((note) => (
+              <p key={note.id} className="mt-5 rounded-2xl border border-accent/40 bg-accent/10 p-4 text-sm leading-6 text-foreground">
+                {note.text}
+              </p>
+            ))}
           </article>
         ))}
+      </section>
+
+      {priceNotes.length > 0 && (
+        <section className="mt-12">
+          <h2 className="text-2xl font-black text-foreground">Understanding the prices</h2>
+          <div className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+            {priceNotes.map((note) => (
+              <article key={note.id} className="rounded-2xl border border-border bg-card p-5 shadow-sm">
+                <h3 className="text-base font-bold text-foreground">{note.title}</h3>
+                <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                  {note.text.startsWith(note.title) ? note.text.slice(note.title.length).replace(/^[.:]\s*/, "") : note.text}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section className="mt-12 flex flex-col items-start justify-between gap-5 rounded-3xl border border-border bg-card p-6 shadow-sm sm:flex-row sm:items-center">
+        <div>
+          <h2 className="text-xl font-black text-foreground">Vouchers are sold only at our offices.</h2>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Buy at the office you are visiting — the price list displayed there always applies. Source: {guideName}.
+          </p>
+        </div>
+        <Button asChild>
+          <Link href="/locations">Find an office</Link>
+        </Button>
       </section>
 
       <section className="mt-20">

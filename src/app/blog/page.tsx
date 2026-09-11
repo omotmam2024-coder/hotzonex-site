@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { blogCategories, blogPosts } from "@/config/content";
@@ -25,9 +26,13 @@ export default async function BlogPage({ searchParams }: { searchParams: Promise
         </div>
 
         <div className="relative overflow-hidden rounded-[2rem] border border-border bg-card shadow-lg shadow-slate-200/60">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
             alt="African blog and digital support insights"
+            width={1200}
+            height={800}
+            sizes="(max-width: 1024px) 100vw, 45vw"
+            loading="eager"
             className="h-[300px] w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/15 to-transparent" />

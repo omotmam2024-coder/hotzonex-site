@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { siteConfig } from "@/config/site";
@@ -21,9 +22,13 @@ export default function ServicesPage() {
         </div>
 
         <div className="relative overflow-hidden rounded-[2rem] border border-border bg-card shadow-lg shadow-slate-200/60">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80"
             alt="African support and technical services"
+            width={1200}
+            height={800}
+            sizes="(max-width: 1024px) 100vw, 45vw"
+            loading="eager"
             className="h-[360px] w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-900/15 to-transparent" />
@@ -40,9 +45,12 @@ export default function ServicesPage() {
         {siteConfig.services.map((service) => (
           <article key={service.slug} className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
             {service.image ? (
-              <img
+              <Image
                 src={service.image}
                 alt={service.imageAlt ?? service.title}
+                width={1200}
+                height={800}
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="h-52 w-full object-cover"
               />
             ) : null}

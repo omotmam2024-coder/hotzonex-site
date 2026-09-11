@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -49,9 +50,13 @@ export default function AboutPage() {
 
         <div className="space-y-5">
           <div className="overflow-hidden rounded-[2rem] border border-border bg-card shadow-lg shadow-slate-200/60">
-            <img
+            <Image
               src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1200&q=80"
               alt="African Hotzonex team helping customers with technology support"
+              width={1200}
+              height={800}
+              sizes="(max-width: 1024px) 100vw, 45vw"
+              loading="eager"
               className="h-[360px] w-full object-cover"
             />
           </div>

@@ -10,50 +10,44 @@ export const siteConfig = {
     address: "Juba, South Sudan",
     hours: "Daily, during office hours",
   },
+  // The three offices, their hours, Wi-Fi networks and starting prices, as
+  // published in the Hotzonex Wi-Fi Customer Service Guide (doc/Hotzonex_policy.pdf).
   locations: [
     {
       slug: "gorom",
-      name: "Gorom",
-      area: "Gorom Home Office",
+      name: "Gorom Home Office",
+      area: "Gorom, Juba",
       status: "Open",
       hours: "8:00 AM – 10:00 PM (Wi-Fi runs 24/7)",
-      services: ["WiFi hotspot vouchers", "Support"],
+      networks: ["HOTZONEX-WIFI", "HOTZONEX-WIFI-2 (and 5G)", "HOTZONEX-WIFI3"],
+      vouchersFrom: "1,000 SSP",
+      services: ["WiFi hotspot vouchers", "Customer support"],
       address: "Gorom Home Office, Juba, South Sudan",
       mapUrl: "https://www.google.com/maps/search/?api=1&query=Gorom+Home+Office+Juba+South+Sudan",
-      directionsLabel: "Get directions",
-    },
-    {
-      slug: "jebel-iraq",
-      name: "Jebel Iraq",
-      area: "Jebel-Iraq Head Office",
-      status: "Open",
-      hours: "8:00 AM – 11:00 PM",
-      services: ["WiFi hotspot vouchers", "Support"],
-      address: "Jebel-Iraq Head Office, Juba, South Sudan",
-      mapUrl: "https://www.google.com/maps/search/?api=1&query=Jebel-Iraq+Head+Office+Juba+South+Sudan",
-      directionsLabel: "Get directions",
     },
     {
       slug: "head-office",
-      name: "Head Office",
-      area: "Jebel-Iraq Head Office",
+      name: "Jebel-Iraq Head Office",
+      area: "Jebel-Iraq, Juba",
       status: "Open",
       hours: "8:00 AM – 11:00 PM",
-      services: ["Home & office internet", "IT support"],
+      networks: ["HOTZONEX-WIFI", "HOTZONEX-WIFI-2 (and 5G)", "HOTZONEX-GOLD (and 5G)"],
+      vouchersFrom: "1,500 SSP",
+      services: ["WiFi hotspot vouchers", "Home & office internet", "IT support", "Starlink and MikroTik quotes"],
       address: "Jebel-Iraq Head Office, Juba, South Sudan",
       mapUrl: "https://www.google.com/maps/search/?api=1&query=Jebel-Iraq+Head+Office+Juba+South+Sudan",
-      directionsLabel: "Get directions",
     },
     {
       slug: "sub-office",
-      name: "Sub-Office",
-      area: "Jebel-Iraq Sub Office",
+      name: "Jebel-Iraq Sub Office",
+      area: "Jebel-Iraq, Juba",
       status: "Open",
       hours: "8:00 AM – 11:00 PM",
-      services: ["Home & office internet", "IT support"],
+      networks: ["HOTZONEX-WIFI", "HOTZONEX-WIFI3 (and 5G)"],
+      vouchersFrom: "2,000 SSP",
+      services: ["WiFi hotspot vouchers (LITE, Popular, Power and Max)", "Home & office internet", "IT support"],
       address: "Jebel-Iraq Sub Office, Juba, South Sudan",
       mapUrl: "https://www.google.com/maps/search/?api=1&query=Jebel-Iraq+Sub+Office+Juba+South+Sudan",
-      directionsLabel: "Get directions",
     },
   ],
   services: [
@@ -64,14 +58,14 @@ export const siteConfig = {
         "Prepaid internet access for public hotspot visitors who need affordable connectivity without a long-term contract.",
       audience: "Walk-up customers, students, commuters, and temporary users who need access on demand.",
       included: [
-        "Time- or data-based vouchers",
+        "Time-based vouchers, unlimited for their period",
         "Fast hotspot onboarding support",
         "On-site help for connection issues",
       ],
       steps: [
-        "Choose a voucher package that matches your needs.",
-        "Connect to the hotspot at your preferred location.",
-        "Receive support if you need help getting online.",
+        "Buy a voucher at the Hotzonex office you are visiting.",
+        "Connect to that office's HOTZONEX network and enter your code.",
+        "Ask our staff or call support if you need help getting online.",
       ],
       cta: "Request a voucher",
       highlight: "Popular with walk-up users who want simple, prepaid access.",
@@ -186,32 +180,9 @@ export const siteConfig = {
       imageAlt: "Website and software development services.",
     },
   ],
+  // Voucher prices are not listed here: the pricing page reads them from the
+  // Customer Service Guide so they cannot drift from what the offices charge.
   pricing: {
-    currency: "SSP",
-    currencyLabel: "SSP",
-    packages: [
-      {
-        name: "1 Hour Voucher",
-        price: "1,000",
-        description: "Starting rate at Gorom Home Office. Prices vary by location.",
-        features: ["Fast hotspot access", "Ideal for short visits"],
-        recommended: true,
-      },
-      {
-        name: "1 Day Voucher",
-        price: "6,000",
-        description: "A practical option for a full day of connectivity at Gorom Home Office.",
-        features: ["Longer daily access", "Good for work or study"],
-        recommended: false,
-      },
-      {
-        name: "Weekly Bundle",
-        price: "15,000",
-        description: "The best value option for repeated use at Gorom Home Office.",
-        features: ["Extended duration", "Better value for frequent use"],
-        recommended: false,
-      },
-    ],
     quoteTypes: [
       {
         title: "Installation",
@@ -235,19 +206,9 @@ export const siteConfig = {
       },
     ],
   },
+  // Questions about the services the Customer Service Guide does not cover. Wi-Fi,
+  // voucher and policy questions come from the guide itself (see src/lib/guide.ts).
   faqs: [
-    {
-      category: "General",
-      question: "How can I buy a hotspot voucher?",
-      answer:
-        "Customers can visit an active hotspot location and ask for assistance, or contact Hotzonex directly to confirm the next steps.",
-    },
-    {
-      category: "Locations",
-      question: "Which hotspot locations are currently active?",
-      answer:
-        "Hotzonex currently operates three Wi-Fi locations in Juba: Gorom Home Office, Jebel-Iraq Head Office, and Jebel-Iraq Sub Office. Gorom runs 24/7 Wi-Fi with office hours from 8:00 AM to 10:00 PM, while the Jebel-Iraq offices are open from 8:00 AM to 11:00 PM.",
-    },
     {
       category: "Services",
       question: "Do you provide installation for homes and offices?",
@@ -260,16 +221,5 @@ export const siteConfig = {
       answer:
         "Yes. Hotzonex also develops websites and software for organisations that need custom digital solutions.",
     },
-  ],
-  social: {
-    facebook: "https://www.facebook.com/",
-    x: "https://x.com/",
-    instagram: "https://www.instagram.com/",
-    linkedin: "https://www.linkedin.com/",
-  },
-  needsRealContent: [
-    "Customer testimonials to add for stronger social proof",
-    "Pricing source for hotspot packages to confirm and publish",
-    "Destination email for contact form delivery to configure in production",
   ],
 };

@@ -3,22 +3,20 @@
 import { ChevronDown, Search } from "lucide-react";
 import { useMemo, useState } from "react";
 
-import { siteConfig } from "@/config/site";
+import type { Faq } from "@/lib/guide";
 
-export function FaqClient() {
+export function FaqClient({ faqs }: { faqs: Faq[] }) {
   const [query, setQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  // Tracked by question rather than list position, so filtering never opens a different answer.
+  const [openQuestion, setOpenQuestion] = useState<string | null>(faqs[0]?.question ?? null);
 
-  const categories = useMemo(
-    () => ["All", ...new Set(siteConfig.faqs.map((item) => item.category))],
-    [],
-  );
+  const categories = useMemo(() => ["All", ...new Set(faqs.map((item) => item.category))], [faqs]);
 
   const filteredFaqs = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
 
-    return siteConfig.faqs.filter((item) => {
+    return faqs.filter((item) => {
       const matchesCategory = activeCategory === "All" || item.category === activeCategory;
       const matchesQuery =
         normalizedQuery.length === 0 ||
@@ -27,7 +25,7 @@ export function FaqClient() {
 
       return matchesCategory && matchesQuery;
     });
-  }, [activeCategory, query]);
+  }, [activeCategory, faqs, query]);
 
   return (
     <div className="space-y-8">
@@ -52,6 +50,7 @@ export function FaqClient() {
           <button
             key={category}
             type="button"
+            aria-pressed={category === activeCategory}
             onClick={() => setActiveCategory(category)}
             className={category === activeCategory ? "rounded-full bg-primary px-3 py-2 text-sm font-medium text-primary-foreground" : "rounded-full border border-border bg-card px-3 py-2 text-sm font-medium text-foreground"}
           >
@@ -62,8 +61,8 @@ export function FaqClient() {
 
       <div className="space-y-4">
         {filteredFaqs.length > 0 ? (
-          filteredFaqs.map((item, index) => {
-            const isOpen = openIndex === index;
+          filteredFaqs.map((item) => {
+            const isOpen = openQuestion === item.question;
 
             return (
               <div key={`${item.category}-${item.question}`} className="overflow-hidden rounded-2xl border border-border bg-card">
@@ -71,13 +70,13 @@ export function FaqClient() {
                   type="button"
                   className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
                   aria-expanded={isOpen}
-                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  onClick={() => setOpenQuestion(isOpen ? null : item.question)}
                 >
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">{item.category}</p>
                     <h3 className="mt-1 text-base font-semibold text-foreground">{item.question}</h3>
                   </div>
-                  <ChevronDown className={isOpen ? "h-5 w-5 rotate-180 transition-transform" : "h-5 w-5 transition-transform"} />
+                  <ChevronDown className={isOpen ? "h-5 w-5 shrink-0 rotate-180 transition-transform" : "h-5 w-5 shrink-0 transition-transform"} />
                 </button>
 
                 {isOpen && (

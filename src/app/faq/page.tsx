@@ -1,13 +1,20 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { FaqClient } from "@/components/faq-client";
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
+import { guideFaqs, guideName } from "@/lib/guide";
 
 export const metadata: Metadata = {
   title: "FAQ",
-  description: "Find answers to common Hotzonex questions about hotspot vouchers, locations, IT support, and development services.",
+  description:
+    "Answers to common Hotzonex questions about Wi-Fi voucher prices, networks, opening hours, refunds, home and office internet, and development services.",
 };
+
+// The guide's Wi-Fi answers first, then the services it does not cover.
+const faqs = [...guideFaqs, ...siteConfig.faqs];
 
 export default function FaqPage() {
   return (
@@ -17,14 +24,19 @@ export default function FaqPage() {
           <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">FAQ</p>
           <h1 className="mt-3 text-4xl font-black text-foreground sm:text-5xl">Questions about Hotzonex services and support.</h1>
           <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground">
-            Find quick answers about vouchers, hotspot locations, home and office internet, Starlink, MikroTik, and the most common service questions.
+            Quick answers about voucher prices, which network to join, opening hours, refunds and our other services.
+            Wi-Fi answers come from the {guideName}.
           </p>
         </div>
 
         <div className="relative overflow-hidden rounded-[2rem] border border-border bg-card shadow-lg shadow-slate-200/60">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"
-            alt="African FAQ and support resources"
+            alt="Hotzonex customer support"
+            width={1200}
+            height={800}
+            sizes="(max-width: 1024px) 100vw, 45vw"
+            loading="eager"
             className="h-[280px] w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/15 to-transparent" />
@@ -33,7 +45,7 @@ export default function FaqPage() {
               <p className="text-xs uppercase tracking-[0.18em] text-slate-200">Need a faster answer?</p>
               <div className="mt-3">
                 <Button asChild size="lg">
-                  <Link href="/contact">Need help?</Link>
+                  <Link href="/contact">Contact us</Link>
                 </Button>
               </div>
             </div>
@@ -42,7 +54,7 @@ export default function FaqPage() {
       </section>
 
       <section className="mt-12">
-        <FaqClient />
+        <FaqClient faqs={faqs} />
       </section>
     </div>
   );

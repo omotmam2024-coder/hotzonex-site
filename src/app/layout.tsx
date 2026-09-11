@@ -20,6 +20,15 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  applicationName: siteConfig.name,
+  // Inherited whole by every page that does not set its own openGraph, so nothing
+  // page-specific (such as url) belongs here.
+  openGraph: {
+    type: "website",
+    siteName: siteConfig.name,
+    locale: "en_US",
+  },
+  twitter: { card: "summary_large_image" },
   keywords: [
     "Hotzonex",
     "Juba South Sudan",

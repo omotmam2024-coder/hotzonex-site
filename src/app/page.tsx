@@ -1,7 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, MapPin, ShieldCheck, Wifi, Wrench } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { siteConfig } from "@/config/site";
+import { lowestVoucherPrice } from "@/lib/guide";
 
 const services = [
   {
@@ -100,17 +103,23 @@ export default function HomePage() {
               </div>
 
               <div className="flex flex-wrap items-center gap-6 pt-3 text-sm text-muted-foreground">
-                <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> Gorom</span>
-                <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> Jebel Iraq</span>
-                <span className="flex items-center gap-2"><MapPin className="h-4 w-4 text-primary" /> Head Office</span>
+                {siteConfig.locations.map((location) => (
+                  <span key={location.slug} className="flex items-center gap-2">
+                    <MapPin className="h-4 w-4 text-primary" /> {location.name}
+                  </span>
+                ))}
               </div>
             </div>
 
             <div className="relative">
               <div className="overflow-hidden rounded-[2rem] border border-border bg-card shadow-xl shadow-slate-200/60">
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=80"
-                  alt="African professionals collaborating on internet support"
+                  alt="Hotzonex team providing internet support"
+                  width={1200}
+                  height={800}
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  preload
                   className="h-[500px] w-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/20 to-transparent" />
@@ -119,14 +128,14 @@ export default function HomePage() {
                     <div className="flex items-center justify-between gap-3">
                       <div>
                         <p className="text-xs uppercase tracking-[0.18em] text-slate-200">Hotspot packages</p>
-                        <p className="mt-2 text-2xl font-black text-white">From SSP 1,000</p>
+                        <p className="mt-2 text-2xl font-black text-white">From {lowestVoucherPrice}</p>
                       </div>
                       <span className="rounded-full bg-emerald-400/20 px-2 py-1 text-xs font-semibold text-emerald-200">
                         Recommended
                       </span>
                     </div>
                     <div className="mt-4 flex items-center justify-between text-sm text-slate-200">
-                      <span>3 locations in Juba</span>
+                      <span>{siteConfig.locations.length} offices in Juba</span>
                       <span>24/7 Gorom Wi-Fi</span>
                     </div>
                   </div>
@@ -141,7 +150,14 @@ export default function HomePage() {
         <div className="grid gap-6 lg:grid-cols-3">
           {galleryImages.map((item) => (
             <figure key={item.title} className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
-              <img src={item.image} alt={item.title} className="h-64 w-full object-cover" loading="lazy" />
+              <Image
+                src={item.image}
+                alt={item.title}
+                width={900}
+                height={600}
+                sizes="(max-width: 1024px) 100vw, 33vw"
+                className="h-64 w-full object-cover"
+              />
               <figcaption className="space-y-2 p-5">
                 <h3 className="text-xl font-bold text-foreground">{item.title}</h3>
                 <p className="text-sm leading-6 text-muted-foreground">{item.description}</p>
@@ -154,16 +170,16 @@ export default function HomePage() {
       <section className="border-y border-border bg-card">
         <div className="mx-auto grid max-w-7xl gap-6 px-4 py-6 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
           <div>
-            <p className="text-3xl font-black text-foreground">3</p>
-            <p className="text-sm text-muted-foreground">Hotspot locations served</p>
+            <p className="text-3xl font-black text-foreground">{siteConfig.locations.length}</p>
+            <p className="text-sm text-muted-foreground">Wi-Fi offices in Juba</p>
           </div>
           <div>
             <p className="text-3xl font-black text-foreground">Daily</p>
             <p className="text-sm text-muted-foreground">Support hours</p>
           </div>
           <div>
-            <p className="text-3xl font-black text-foreground">3</p>
-            <p className="text-sm text-muted-foreground">Office locations in Juba</p>
+            <p className="text-3xl font-black text-foreground">{lowestVoucherPrice}</p>
+            <p className="text-sm text-muted-foreground">Wi-Fi vouchers from</p>
           </div>
           <div>
             <p className="text-3xl font-black text-foreground">24/7</p>

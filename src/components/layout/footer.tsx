@@ -44,8 +44,16 @@ export function Footer() {
             Contact
           </h3>
           <ul className="space-y-3 text-sm text-foreground">
-            <li>{siteConfig.contact.phone}</li>
-            <li>{siteConfig.contact.email}</li>
+            <li>
+              <a href={`tel:+${siteConfig.contact.phone.replace(/\D/g, "")}`} className="hover:text-primary">
+                {siteConfig.contact.phone}
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${siteConfig.contact.email}`} className="break-all hover:text-primary">
+                {siteConfig.contact.email}
+              </a>
+            </li>
             <li>{siteConfig.contact.address}</li>
           </ul>
         </div>

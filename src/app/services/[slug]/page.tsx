@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -41,9 +42,13 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
 
       <article className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
         {service.image ? (
-          <img
+          <Image
             src={service.image}
             alt={service.imageAlt ?? service.title}
+            width={1200}
+            height={800}
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            loading="eager"
             className="h-72 w-full object-cover"
           />
         ) : null}

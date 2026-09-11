@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -16,13 +17,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!location) {
     return {
       title: "Location details",
-      description: "Location details for Hotzonex hotspot and support locations.",
+      description: "Location details for Hotzonex Wi-Fi offices in Juba.",
     };
   }
 
   return {
     title: location.name,
-    description: `${location.name} (${location.area}) — Hotzonex services: ${location.services.join(", ")}. Hours: ${location.hours}.`,
+    description: `${location.name}, ${location.area}. Open ${location.hours}. Wi-Fi vouchers from ${location.vouchersFrom}. Services: ${location.services.join(", ")}.`,
   };
 }
 
@@ -44,9 +45,13 @@ export default async function LocationDetailPage({ params }: { params: Promise<{
 
       <article className="overflow-hidden rounded-[2rem] border border-border bg-card shadow-lg shadow-slate-200/60">
         <div className="relative">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1200&q=80"
-            alt={`${location.name} African Hotzonex location`}
+            alt={`Customers at ${location.name}`}
+            width={1200}
+            height={800}
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            loading="eager"
             className="h-72 w-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-slate-900/20 to-transparent" />
@@ -65,25 +70,43 @@ export default async function LocationDetailPage({ params }: { params: Promise<{
 
         <div className="p-8">
           <div className="grid gap-8 lg:grid-cols-2">
-          <div className="space-y-4 text-sm text-muted-foreground">
-            <p><span className="font-semibold text-foreground">Area:</span> {location.area}</p>
-            <p><span className="font-semibold text-foreground">Address:</span> {location.address}</p>
-            <p><span className="font-semibold text-foreground">Hours:</span> {location.hours}</p>
-          </div>
+            <div className="space-y-6">
+              <dl className="space-y-4 text-sm text-muted-foreground">
+                <div><dt className="inline font-semibold text-foreground">Hours: </dt><dd className="inline">{location.hours}</dd></div>
+                <div><dt className="inline font-semibold text-foreground">Vouchers from: </dt><dd className="inline">{location.vouchersFrom}</dd></div>
+                <div><dt className="inline font-semibold text-foreground">Address: </dt><dd className="inline">{location.address}</dd></div>
+              </dl>
 
-          <div className="rounded-2xl border border-border bg-background p-6">
-            <h2 className="text-2xl font-black text-foreground">Services available</h2>
-            <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-              {location.services.map((service) => (
-                <li key={service}>• {service}</li>
-              ))}
-            </ul>
+              <div>
+                <h2 className="text-lg font-black text-foreground">Wi-Fi networks</h2>
+                <ul className="mt-3 space-y-2 font-mono text-sm text-foreground">
+                  {location.networks.map((network) => (
+                    <li key={network}>{network}</li>
+                  ))}
+                </ul>
+                <p className="mt-3 text-xs leading-5 text-muted-foreground">
+                  Vouchers bought here work only on this office&apos;s networks, even where a network name also appears at
+                  another office.
+                </p>
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-border bg-background p-6">
+              <h2 className="text-2xl font-black text-foreground">Services available</h2>
+              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+                {location.services.map((service) => (
+                  <li key={service}>• {service}</li>
+                ))}
+              </ul>
+              <Link href="/pricing" className="mt-6 inline-block text-sm font-semibold text-primary">
+                See voucher prices →
+              </Link>
+            </div>
           </div>
-        </div>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild>
-              <Link href={location.mapUrl}>Get directions</Link>
+              <a href={location.mapUrl} target="_blank" rel="noopener noreferrer">Get directions</a>
             </Button>
             <Button variant="outline" asChild>
               <Link href="/locations">Back to locations</Link>
