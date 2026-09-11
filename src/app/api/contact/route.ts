@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { contactSchema } from "@/lib/contact";
+import { sendContactEmail } from "@/lib/mail";
 import { getSupabaseServerClient } from "@/lib/supabase";
 
 export async function POST(request: Request) {
@@ -24,6 +25,8 @@ export async function POST(request: Request) {
       );
     }
 
+    await sendContactEmail(parsed.data);
+
     const supabase = getSupabaseServerClient();
 
     if (supabase) {
@@ -38,12 +41,16 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({
-      message:
-        "Thanks. Your message has been received. Delivery to the destination email is pending final setup.",
+      message: "Thanks. Your message has been sent directly to Hotzonex by email.",
     });
-  } catch {
+  } catch (error) {
+    const message =
+      error instanceof Error && error.message
+        ? error.message
+        : "Unable to process the form right now.";
+
     return NextResponse.json(
-      { error: "Unable to process the form right now." },
+      { error: message },
       { status: 500 },
     );
   }

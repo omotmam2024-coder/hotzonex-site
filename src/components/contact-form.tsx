@@ -56,7 +56,7 @@ export function ContactForm() {
         type: "success",
         message:
           data.message ||
-          "Thanks. Your message has been received. Delivery to the destination email is pending final setup.",
+          "Thanks. Your message has been sent directly to Hotzonex by email.",
       });
     } catch (error) {
       setSubmitState({

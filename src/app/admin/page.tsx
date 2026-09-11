@@ -14,6 +14,7 @@ const adminChecklist = [
   "Enable Row Level Security (RLS) and verify the policies.",
   "Populate NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY.",
   "Add SUPABASE_SERVICE_ROLE_KEY for server-side admin actions.",
+  "Configure Gmail SMTP via MAIL_HOST, MAIL_PORT, MAIL_USER, MAIL_PASS, MAIL_TO.",
   "Configure auth and create an admin account for content management.",
 ];
 
@@ -118,6 +119,10 @@ export default function AdminPage() {
               <p className="font-semibold text-foreground">SUPABASE_SERVICE_ROLE_KEY</p>
               <p className="mt-1">Server-side admin operations.</p>
             </div>
+            <div className="rounded-xl border border-border bg-background p-3">
+              <p className="font-semibold text-foreground">MAIL_USER / MAIL_PASS / MAIL_TO</p>
+              <p className="mt-1">Use your Gmail address and an App Password to deliver service requests directly to your inbox.</p>
+            </div>
           </div>
         </div>
       </section>
@@ -139,7 +144,7 @@ export default function AdminPage() {
           <h2 className="text-2xl font-black text-foreground">Delivery notes</h2>
           <ul className="mt-4 space-y-3 text-sm leading-6 text-muted-foreground">
             <li>• The schema for database objects and RLS policies lives in <span className="font-semibold text-foreground">supabase/schema.sql</span>.</li>
-            <li>• The contact form now attempts to write to Supabase when the configuration is present.</li>
+            <li>• The contact form now sends inbound requests directly through Gmail SMTP, then stores them in Supabase when configured.</li>
             <li>• Public-facing placeholders have been cleaned up; remaining content items are backend or business-specific details such as testimonials, pricing sources, and production contact delivery settings.</li>
             <li>• The existing site content remains fully static and production-ready without live backend credentials.</li>
           </ul>
