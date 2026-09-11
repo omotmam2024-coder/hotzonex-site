@@ -4,6 +4,7 @@ import { MessageCircle, Phone } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
+import { officeAlt, officeImages } from "@/lib/office-images";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -23,10 +24,9 @@ export default function ContactPage() {
 
           <div className="mt-8 overflow-hidden rounded-[2rem] border border-border bg-card shadow-lg shadow-slate-200/60">
             <Image
-              src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=80"
-              alt="An acacia tree on the savanna at sunset"
-              width={1200}
-              height={800}
+              src={officeImages.desk}
+              alt={officeAlt.desk}
+              placeholder="blur"
               sizes="(max-width: 1024px) 100vw, 40vw"
               loading="eager"
               className="h-56 w-full object-cover"

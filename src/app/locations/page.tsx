@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { siteConfig } from "@/config/site";
+import { officeAlt, officeImages } from "@/lib/office-images";
 
 export const metadata: Metadata = {
   title: "Locations",
@@ -25,10 +26,9 @@ export default function LocationsPage() {
 
         <div className="relative overflow-hidden rounded-[2rem] border border-border bg-card shadow-lg shadow-slate-200/60">
           <Image
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80"
-            alt="Three people laughing around laptops at a café table"
-            width={1200}
-            height={800}
+            src={officeImages.wide}
+            alt={officeAlt.wide}
+            placeholder="blur"
             sizes="(max-width: 1024px) 100vw, 45vw"
             loading="eager"
             className="h-[320px] w-full object-cover"

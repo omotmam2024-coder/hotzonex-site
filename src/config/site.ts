@@ -1,3 +1,5 @@
+import type { OfficeImage } from "@/lib/office-images";
+
 export const siteConfig = {
   name: "Hotzonex",
   description:
@@ -69,8 +71,7 @@ export const siteConfig = {
       ],
       cta: "Request a voucher",
       highlight: "Popular with walk-up users who want simple, prepaid access.",
-      image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Friends sitting arm in arm, looking out towards a cable car",
+      image: "desk" as OfficeImage,
     },
     {
       slug: "home-office-internet",
@@ -90,8 +91,7 @@ export const siteConfig = {
       ],
       cta: "Request a dedicated connection",
       highlight: "Built for people who need a reliable connection every day.",
-      image: "https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "A customer being served at a café counter",
+      image: "workstations" as OfficeImage,
     },
     {
       slug: "network-setup-it-support",
@@ -111,8 +111,7 @@ export const siteConfig = {
       ],
       cta: "Request IT support",
       highlight: "Designed for customers who need help with real-world network issues.",
-      image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "An acacia tree on the savanna at sunset",
+      image: "servicesWall" as OfficeImage,
     },
     {
       slug: "starlink-installation-activation",
@@ -132,9 +131,7 @@ export const siteConfig = {
       ],
       cta: "Request Starlink setup",
       highlight: "Ideal for customers who need a dependable satellite internet option.",
-      image:
-        "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Two people pointing at a laptop screen",
+      image: "sign" as OfficeImage,
     },
     {
       slug: "mikrotik-configuration-hotspot",
@@ -154,9 +151,7 @@ export const siteConfig = {
       ],
       cta: "Request MikroTik support",
       highlight: "Built for customers who want secure, organised, and scalable network management.",
-      image:
-        "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Three people laughing around laptops at a café table",
+      image: "equipment" as OfficeImage,
     },
     {
       slug: "website-software-development",
@@ -176,8 +171,7 @@ export const siteConfig = {
       ],
       cta: "Request a development quote",
       highlight: "Hotzonex also builds digital products for other businesses.",
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Three people laughing around laptops at a café table",
+      image: "wide" as OfficeImage,
     },
   ],
   // Voucher prices are not listed here: the pricing page reads them from the

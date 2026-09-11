@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
+import { officeAlt, officeImages } from "@/lib/office-images";
 
 export async function generateStaticParams() {
   return siteConfig.services.map((service) => ({ slug: service.slug }));
@@ -43,10 +44,9 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
       <article className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
         {service.image ? (
           <Image
-            src={service.image}
-            alt={service.imageAlt ?? service.title}
-            width={1200}
-            height={800}
+            src={officeImages[service.image]}
+            alt={officeAlt[service.image]}
+            placeholder="blur"
             sizes="(max-width: 1024px) 100vw, 1024px"
             loading="eager"
             className="h-72 w-full object-cover"

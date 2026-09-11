@@ -17,7 +17,7 @@ const websitePractices = [
   "This website has no accounts or forms and does not use cookies, analytics or advertising trackers.",
   "Questions you type into the website assistant are sent to our server only to find an answer in our Customer Service Guide. Hotzonex does not store them or link them to you.",
   "WhatsApp, phone, email and map links open those services directly. Their own privacy policies apply to anything you send through them.",
-  "The site is hosted on Vercel, which keeps standard technical logs (such as IP address and the pages requested) to operate and secure the service. Images are loaded from Unsplash's image service.",
+  "The site is hosted on Vercel, which keeps standard technical logs (such as IP address and the pages requested) to operate and secure the service.",
 ];
 
 export default function PrivacyPage() {

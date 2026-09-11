@@ -21,7 +21,7 @@ by WhatsApp, phone and email.
 | `npm run build`     | Rebuilds the knowledge base from the policy PDF, then `next build`  |
 | `npm start`         | Serves the production build                                         |
 | `npm run knowledge` | Rebuilds only the knowledge base (`src/generated/policy-knowledge.json`) |
-| `npm run brand`     | Regenerates the logo files from `img/logo.png`                      |
+| `npm run brand`     | Regenerates the logo files and office photo crops from `img/`       |
 | `npm run lint`      | ESLint                                                              |
 | `npm run typecheck` | TypeScript                                                          |
 
@@ -74,8 +74,10 @@ icons `src/app/icon.png`, `src/app/apple-icon.png` and `src/app/favicon.ico`. To
 
 ### Photos
 
-Images are loaded from Unsplash through a custom `next/image` loader (`src/lib/image-loader.ts`), which serves a
-size matched to each screen without using Vercel's image optimisation quota.
+Every page photo is a crop of the office photo `img/office.png`. `npm run brand` writes the crops to
+`src/assets/office/` (the crop boxes are listed at the top of `scripts/build-brand-assets.mjs`), and
+`src/lib/office-images.ts` pairs each with its alt text. Pages pick a crop by name, e.g. `image: "equipment"` for a
+service in `src/config/site.ts`. Next.js serves them resized per screen as WebP or AVIF.
 
 ## Deployment
 

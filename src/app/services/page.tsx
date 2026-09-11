@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { siteConfig } from "@/config/site";
+import { officeAlt, officeImages } from "@/lib/office-images";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -23,10 +24,9 @@ export default function ServicesPage() {
 
         <div className="relative overflow-hidden rounded-[2rem] border border-border bg-card shadow-lg shadow-slate-200/60">
           <Image
-            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80"
-            alt="Friends sitting arm in arm, looking out towards a cable car"
-            width={1200}
-            height={800}
+            src={officeImages.reception}
+            alt={officeAlt.reception}
+            placeholder="blur"
             sizes="(max-width: 1024px) 100vw, 45vw"
             loading="eager"
             className="h-[360px] w-full object-cover"
@@ -46,10 +46,9 @@ export default function ServicesPage() {
           <article key={service.slug} className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
             {service.image ? (
               <Image
-                src={service.image}
-                alt={service.imageAlt ?? service.title}
-                width={1200}
-                height={800}
+                src={officeImages[service.image]}
+                alt={officeAlt[service.image]}
+                placeholder="blur"
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="h-52 w-full object-cover"
               />

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
+import { officeAlt, officeImages } from "@/lib/office-images";
 
 export const metadata: Metadata = {
   title: "About",
@@ -51,10 +52,9 @@ export default function AboutPage() {
         <div className="space-y-5">
           <div className="overflow-hidden rounded-[2rem] border border-border bg-card shadow-lg shadow-slate-200/60">
             <Image
-              src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1200&q=80"
-              alt="A customer being served at a café counter"
-              width={1200}
-              height={800}
+              src={officeImages.sign}
+              alt={officeAlt.sign}
+              placeholder="blur"
               sizes="(max-width: 1024px) 100vw, 45vw"
               loading="eager"
               className="h-[360px] w-full object-cover"

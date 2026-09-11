@@ -5,6 +5,7 @@ import { ArrowRight, CheckCircle2, MapPin, ShieldCheck, Wifi, Wrench } from "luc
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { lowestVoucherPrice } from "@/lib/guide";
+import { officeAlt, officeImages } from "@/lib/office-images";
 
 const services = [
   {
@@ -56,23 +57,20 @@ const galleryImages = [
   {
     title: "Reliable hotspot access",
     description: "Fast, affordable WiFi for meetings, study, and day-to-day browsing.",
-    image:
-      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80",
-    alt: "Friends sitting arm in arm, looking out towards a cable car",
+    image: officeImages.workstations,
+    alt: officeAlt.workstations,
   },
   {
     title: "Business connectivity",
     description: "Home and office internet support for stable everyday operations.",
-    image:
-      "https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=900&q=80",
-    alt: "A customer being served at a café counter",
+    image: officeImages.desk,
+    alt: officeAlt.desk,
   },
   {
     title: "Professional network support",
     description: "Practical guidance for Starlink, MikroTik, and hotspot setups.",
-    image:
-      "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=900&q=80",
-    alt: "An acacia tree on the savanna at sunset",
+    image: officeImages.equipment,
+    alt: officeAlt.equipment,
   },
 ];
 
@@ -117,10 +115,9 @@ export default function HomePage() {
             <div className="relative">
               <div className="overflow-hidden rounded-[2rem] border border-border bg-card shadow-xl shadow-slate-200/60">
                 <Image
-                  src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=80"
-                  alt="An acacia tree on the savanna at sunset"
-                  width={1200}
-                  height={800}
+                  src={officeImages.reception}
+                  alt={officeAlt.reception}
+                  placeholder="blur"
                   sizes="(max-width: 1024px) 100vw, 40vw"
                   preload
                   className="h-[500px] w-full object-cover"
@@ -156,8 +153,7 @@ export default function HomePage() {
               <Image
                 src={item.image}
                 alt={item.alt}
-                width={900}
-                height={600}
+                placeholder="blur"
                 sizes="(max-width: 1024px) 100vw, 33vw"
                 className="h-64 w-full object-cover"
               />

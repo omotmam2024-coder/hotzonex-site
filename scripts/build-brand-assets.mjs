@@ -11,7 +11,13 @@
  *   src/app/apple-icon.png              180px  iPhone home screen (white background)
  *   src/app/favicon.ico            16/32/48px  legacy favicon
  *
- * Run `npm run brand` after replacing img/logo.png, then commit the outputs.
+ * It also cuts the office photo (img/office.png) into focused crops for the page
+ * images — reception, services wall, equipment shelves and so on — so rows of cards
+ * show different parts of the office rather than the same picture repeated:
+ *
+ *   src/assets/office/<crop>.jpg        imported by src/lib/office-images.ts
+ *
+ * Run `npm run brand` after replacing either original, then commit the outputs.
  */
 import fs from "node:fs";
 import path from "node:path";
@@ -20,6 +26,21 @@ import sharp from "sharp";
 
 const root = path.resolve(import.meta.dirname, "..");
 const SOURCE = path.join(root, "img/logo.png");
+const OFFICE = path.join(root, "img/office.png");
+
+/**
+ * Crop boxes in pixels on the 1536×1024 office photo: [left, top, width, height].
+ * If the photo is replaced with a different shot, adjust these to match it.
+ */
+const OFFICE_CROPS = {
+  reception: [700, 60, 836, 836],
+  sign: [900, 100, 636, 460],
+  servicesWall: [0, 30, 660, 580],
+  equipment: [300, 80, 600, 400],
+  workstations: [290, 230, 590, 470],
+  desk: [760, 440, 776, 520],
+  wide: [0, 0, 1536, 1024],
+};
 
 /** Alpha below this is treated as empty margin when finding the badge's edges. */
 const ALPHA_THRESHOLD = 8;
@@ -116,7 +137,18 @@ async function main() {
   );
   write("src/app/favicon.ico", toIco(icoImages));
 
-  console.log(`Brand assets from ${path.relative(root, SOURCE)}:\n  ${outputs.join("\n  ")}`);
+  if (fs.existsSync(OFFICE)) {
+    // Kept at their natural size; next/image resizes them per screen when served.
+    for (const [name, [left, top, width, height]] of Object.entries(OFFICE_CROPS)) {
+      const crop = await sharp(OFFICE)
+        .extract({ left, top, width, height })
+        .jpeg({ quality: 84, mozjpeg: true, progressive: true })
+        .toBuffer();
+      write(`src/assets/office/${name}.jpg`, crop);
+    }
+  }
+
+  console.log(`Brand assets from img/:\n  ${outputs.join("\n  ")}`);
 }
 
 main().catch((error) => {
