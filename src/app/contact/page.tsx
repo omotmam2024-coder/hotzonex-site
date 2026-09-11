@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import { MessageCircle, Phone } from "lucide-react";
 
-import { ContactForm } from "@/components/contact-form";
+import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -9,6 +10,9 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
+  const whatsappNumber = siteConfig.contact.whatsapp.replace(/\D/g, "");
+  const phoneNumber = siteConfig.contact.phone.replace(/\D/g, "");
+
   return (
     <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
       <section className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
@@ -54,7 +58,53 @@ export default function ContactPage() {
           </div>
         </div>
 
-        <ContactForm />
+        <div className="rounded-3xl border border-border bg-card p-6 shadow-sm sm:p-8">
+          <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#25D366]/10 text-[#25D366]">
+            <MessageCircle className="h-6 w-6" />
+          </span>
+
+          <h2 className="mt-5 text-3xl font-black text-foreground">Message us on WhatsApp</h2>
+          <p className="mt-3 text-base leading-7 text-muted-foreground">
+            WhatsApp is the fastest way to reach the Hotzonex team. Send us your question and we will reply during
+            working hours — {siteConfig.contact.hours.toLowerCase()}.
+          </p>
+
+          <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <Button size="lg" asChild className="bg-[#25D366] text-white hover:bg-[#1fb65d] focus-visible:ring-emerald-400">
+              <a href={`https://wa.me/${whatsappNumber}`} target="_blank" rel="noreferrer">
+                <MessageCircle className="h-5 w-5" />
+                Chat on WhatsApp
+              </a>
+            </Button>
+
+            <Button size="lg" variant="outline" asChild>
+              <a href={`tel:+${phoneNumber}`}>
+                <Phone className="h-5 w-5" />
+                Call {siteConfig.contact.phone}
+              </a>
+            </Button>
+          </div>
+
+          <div className="mt-8 border-t border-border pt-6">
+            <p className="text-sm font-semibold text-foreground">Prefer email?</p>
+            <p className="mt-1 text-sm leading-6 text-muted-foreground">
+              Write to{" "}
+              <a href={`mailto:${siteConfig.contact.email}`} className="font-medium text-primary underline underline-offset-4">
+                {siteConfig.contact.email}
+              </a>{" "}
+              and include your location and the service you need, so we can respond with the right details.
+            </p>
+          </div>
+
+          <div className="mt-6 rounded-2xl border border-border bg-muted/30 p-4">
+            <p className="text-sm font-semibold text-foreground">Helpful details to include</p>
+            <ul className="mt-3 space-y-2 text-sm leading-6 text-muted-foreground">
+              <li>• The service you need — vouchers, internet, Starlink, IT support, or web development.</li>
+              <li>• Your area in Juba, so we can match you to the nearest office.</li>
+              <li>• Whether the request is for a home, shop, or business.</li>
+            </ul>
+          </div>
+        </div>
       </section>
     </div>
   );
