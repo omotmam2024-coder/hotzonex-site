@@ -3,7 +3,7 @@
 Marketing site and customer assistant for **Hotzonex** — Wi-Fi hotspot vouchers, home and office internet,
 Starlink and MikroTik setup, IT support, and website/software development in Juba, South Sudan.
 
-Live at <https://hotzonex-site.vercel.app>. Built with Next.js 16 (App Router), React 19, TypeScript and Tailwind CSS 4.
+Live at <https://hotzonex.dev>. Built with Next.js 16 (App Router), React 19, TypeScript and Tailwind CSS 4.
 
 ## Getting started
 
@@ -82,7 +82,10 @@ service in `src/config/site.ts`. Next.js serves them resized per screen as WebP 
 ## Deployment
 
 The Vercel project `hotzonex-site` deploys automatically on every push to `master`, running `npm run build`.
-Security headers and the redirect from the retired `/locations/jebel-iraq` URL are set in `next.config.ts`;
+The site's address is `siteConfig.url` in `src/config/site.ts` (used by the sitemap, robots.txt, share previews and
+search-engine data). `www.hotzonex.dev` and the old `hotzonex-site.vercel.app` redirect to `https://hotzonex.dev`.
+Those redirects, the security headers and the redirect from the retired `/locations/jebel-iraq` URL are set in
+`next.config.ts`;
 `/sitemap.xml`, `/robots.txt` and the social preview image are generated from `src/app/`.
 
 `supabase/schema.sql` is not used by the site today. It is kept as a starting point for a future admin area.
