@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, MapPin, ShieldCheck, Wifi, Wrench } from "lucide-react";
 
-import { AssistantChat } from "@/components/assistant-chat";
 import { Button } from "@/components/ui/button";
 
 const services = [
@@ -235,10 +234,6 @@ export default function HomePage() {
             </div>
           ))}
         </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
-        <AssistantChat />
       </section>
     </>
   );
