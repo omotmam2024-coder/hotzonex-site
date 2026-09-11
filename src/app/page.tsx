@@ -58,18 +58,21 @@ const galleryImages = [
     description: "Fast, affordable WiFi for meetings, study, and day-to-day browsing.",
     image:
       "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80",
+    alt: "Friends sitting arm in arm, looking out towards a cable car",
   },
   {
     title: "Business connectivity",
     description: "Home and office internet support for stable everyday operations.",
     image:
       "https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=900&q=80",
+    alt: "A customer being served at a café counter",
   },
   {
     title: "Professional network support",
     description: "Practical guidance for Starlink, MikroTik, and hotspot setups.",
     image:
       "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=900&q=80",
+    alt: "An acacia tree on the savanna at sunset",
   },
 ];
 
@@ -115,7 +118,7 @@ export default function HomePage() {
               <div className="overflow-hidden rounded-[2rem] border border-border bg-card shadow-xl shadow-slate-200/60">
                 <Image
                   src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=80"
-                  alt="Hotzonex team providing internet support"
+                  alt="An acacia tree on the savanna at sunset"
                   width={1200}
                   height={800}
                   sizes="(max-width: 1024px) 100vw, 40vw"
@@ -152,7 +155,7 @@ export default function HomePage() {
             <figure key={item.title} className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
               <Image
                 src={item.image}
-                alt={item.title}
+                alt={item.alt}
                 width={900}
                 height={600}
                 sizes="(max-width: 1024px) 100vw, 33vw"

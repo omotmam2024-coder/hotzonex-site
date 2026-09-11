@@ -47,7 +47,7 @@ export default async function LocationDetailPage({ params }: { params: Promise<{
         <div className="relative">
           <Image
             src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1200&q=80"
-            alt={`Customers at ${location.name}`}
+            alt="A customer being served at a café counter"
             width={1200}
             height={800}
             sizes="(max-width: 1024px) 100vw, 1024px"

@@ -24,7 +24,7 @@ export default function ServicesPage() {
         <div className="relative overflow-hidden rounded-[2rem] border border-border bg-card shadow-lg shadow-slate-200/60">
           <Image
             src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80"
-            alt="African support and technical services"
+            alt="Friends sitting arm in arm, looking out towards a cable car"
             width={1200}
             height={800}
             sizes="(max-width: 1024px) 100vw, 45vw"

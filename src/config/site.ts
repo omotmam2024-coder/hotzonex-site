@@ -70,7 +70,7 @@ export const siteConfig = {
       cta: "Request a voucher",
       highlight: "Popular with walk-up users who want simple, prepaid access.",
       image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Hotspot voucher access and customer support experience.",
+      imageAlt: "Friends sitting arm in arm, looking out towards a cable car",
     },
     {
       slug: "home-office-internet",
@@ -91,7 +91,7 @@ export const siteConfig = {
       cta: "Request a dedicated connection",
       highlight: "Built for people who need a reliable connection every day.",
       image: "https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Home and office internet installation support.",
+      imageAlt: "A customer being served at a café counter",
     },
     {
       slug: "network-setup-it-support",
@@ -112,7 +112,7 @@ export const siteConfig = {
       cta: "Request IT support",
       highlight: "Designed for customers who need help with real-world network issues.",
       image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "IT support and network troubleshooting services.",
+      imageAlt: "An acacia tree on the savanna at sunset",
     },
     {
       slug: "starlink-installation-activation",
@@ -134,7 +134,7 @@ export const siteConfig = {
       highlight: "Ideal for customers who need a dependable satellite internet option.",
       image:
         "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Professional Starlink installation and satellite internet support.",
+      imageAlt: "Two people pointing at a laptop screen",
     },
     {
       slug: "mikrotik-configuration-hotspot",
@@ -156,7 +156,7 @@ export const siteConfig = {
       highlight: "Built for customers who want secure, organised, and scalable network management.",
       image:
         "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "MikroTik configuration and hotspot networking setup.",
+      imageAlt: "Three people laughing around laptops at a café table",
     },
     {
       slug: "website-software-development",
@@ -177,7 +177,7 @@ export const siteConfig = {
       cta: "Request a development quote",
       highlight: "Hotzonex also builds digital products for other businesses.",
       image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
-      imageAlt: "Website and software development services.",
+      imageAlt: "Three people laughing around laptops at a café table",
     },
   ],
   // Voucher prices are not listed here: the pricing page reads them from the
