@@ -12,21 +12,6 @@ export function getSupabaseConfig() {
   };
 }
 
-export function getSupabaseBrowserClient() {
-  const { url, anonKey, configured } = getSupabaseConfig();
-
-  if (!configured) {
-    return null;
-  }
-
-  return createClient(url, anonKey, {
-    auth: {
-      persistSession: false,
-      autoRefreshToken: false,
-    },
-  });
-}
-
 export function getSupabaseServerClient() {
   const { url, anonKey, configured } = getSupabaseConfig();
 

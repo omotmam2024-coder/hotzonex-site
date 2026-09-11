@@ -21,6 +21,16 @@ export function getMailConfig() {
   };
 }
 
+/** Submitted values go into an HTML email, so they must not carry markup through. */
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 export async function sendContactEmail(values: ContactFormValues) {
   const { configured, host, port, secure, user, pass, to } = getMailConfig();
 
@@ -38,7 +48,8 @@ export async function sendContactEmail(values: ContactFormValues) {
     },
   });
 
-  const subject = `[Hotzonex Contact] ${values.subject}`;
+  // Keep header-injected newlines out of the subject line.
+  const subject = `[Hotzonex Contact] ${values.subject.replace(/[\r\n]+/g, " ")}`;
   const text = [
     `Name: ${values.name}`,
     `Email: ${values.email}`,
@@ -52,12 +63,12 @@ export async function sendContactEmail(values: ContactFormValues) {
   const html = `
     <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #111827;">
       <h2 style="margin-bottom: 16px;">New service request</h2>
-      <p><strong>Name:</strong> ${values.name}</p>
-      <p><strong>Email:</strong> ${values.email}</p>
-      <p><strong>Phone:</strong> ${values.phone}</p>
-      <p><strong>Subject:</strong> ${values.subject}</p>
+      <p><strong>Name:</strong> ${escapeHtml(values.name)}</p>
+      <p><strong>Email:</strong> ${escapeHtml(values.email)}</p>
+      <p><strong>Phone:</strong> ${escapeHtml(values.phone)}</p>
+      <p><strong>Subject:</strong> ${escapeHtml(values.subject)}</p>
       <div style="margin-top: 16px; padding: 16px; background: #f3f4f6; border-radius: 8px;">
-        <p style="margin: 0; white-space: pre-wrap;"><strong>Message:</strong><br />${values.message}</p>
+        <p style="margin: 0; white-space: pre-wrap;"><strong>Message:</strong><br />${escapeHtml(values.message)}</p>
       </div>
     </div>
   `;

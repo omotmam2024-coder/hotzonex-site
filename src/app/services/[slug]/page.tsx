@@ -9,10 +9,17 @@ export async function generateStaticParams() {
   return siteConfig.services.map((service) => ({ slug: service.slug }));
 }
 
-export function generateMetadata(): Metadata {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const service = siteConfig.services.find((item) => item.slug === slug);
+
+  if (!service) {
+    return { title: "Service detail", description: "Hotzonex service detail page." };
+  }
+
   return {
-    title: "Service detail",
-    description: "Hotzonex service detail page.",
+    title: service.title,
+    description: service.summary,
   };
 }
 

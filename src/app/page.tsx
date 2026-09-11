@@ -3,7 +3,6 @@ import { ArrowRight, CheckCircle2, MapPin, ShieldCheck, Wifi, Wrench } from "luc
 
 import { AssistantChat } from "@/components/assistant-chat";
 import { Button } from "@/components/ui/button";
-import { siteConfig } from "@/config/site";
 
 const services = [
   {

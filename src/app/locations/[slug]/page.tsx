@@ -9,10 +9,22 @@ export async function generateStaticParams() {
   return siteConfig.locations.map((location) => ({ slug: location.slug }));
 }
 
-export const metadata: Metadata = {
-  title: "Location details",
-  description: "Location details for Hotzonex hotspot and support locations.",
-};
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const location = siteConfig.locations.find((item) => item.slug === slug);
+
+  if (!location) {
+    return {
+      title: "Location details",
+      description: "Location details for Hotzonex hotspot and support locations.",
+    };
+  }
+
+  return {
+    title: location.name,
+    description: `${location.name} (${location.area}) — Hotzonex services: ${location.services.join(", ")}. Hours: ${location.hours}.`,
+  };
+}
 
 export default async function LocationDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;

@@ -5,7 +5,15 @@ import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
 
 const pdfFileName = "Hotzonex_WiFi_Customer_Guide_4.pdf";
 
-export async function getPdfKnowledge(): Promise<string> {
+let cached: Promise<string> | null = null;
+
+/** Parsing the guide is expensive, so keep the result for the life of the process. */
+export function getPdfKnowledge(): Promise<string> {
+  cached ??= readPdfKnowledge();
+  return cached;
+}
+
+async function readPdfKnowledge(): Promise<string> {
   try {
     const pdfPath = path.join(process.cwd(), "doc", pdfFileName);
 

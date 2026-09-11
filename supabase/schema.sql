@@ -13,12 +13,17 @@ create table if not exists public.contact_messages (
 
 alter table public.contact_messages enable row level security;
 
-create policy if not exists "Allow public insert to contact_messages"
+-- Postgres has no `create policy if not exists`, so drop first to stay idempotent.
+drop policy if exists "Allow public insert to contact_messages" on public.contact_messages;
+
+create policy "Allow public insert to contact_messages"
 on public.contact_messages
 for insert
 with check (true);
 
-create policy if not exists "Allow authenticated read access to contact_messages"
+drop policy if exists "Allow authenticated read access to contact_messages" on public.contact_messages;
+
+create policy "Allow authenticated read access to contact_messages"
 on public.contact_messages
 for select
 using (auth.role() = 'authenticated');
@@ -37,12 +42,16 @@ create table if not exists public.blog_posts (
 
 alter table public.blog_posts enable row level security;
 
-create policy if not exists "Blog posts are readable by everyone"
+drop policy if exists "Blog posts are readable by everyone" on public.blog_posts;
+
+create policy "Blog posts are readable by everyone"
 on public.blog_posts
 for select
 using (true);
 
-create policy if not exists "Authenticated admins can manage blog posts"
+drop policy if exists "Authenticated admins can manage blog posts" on public.blog_posts;
+
+create policy "Authenticated admins can manage blog posts"
 on public.blog_posts
 for all
 using (auth.role() = 'authenticated')
@@ -59,12 +68,16 @@ create table if not exists public.site_pages (
 
 alter table public.site_pages enable row level security;
 
-create policy if not exists "Site pages are readable by everyone"
+drop policy if exists "Site pages are readable by everyone" on public.site_pages;
+
+create policy "Site pages are readable by everyone"
 on public.site_pages
 for select
 using (true);
 
-create policy if not exists "Authenticated admins can manage site pages"
+drop policy if exists "Authenticated admins can manage site pages" on public.site_pages;
+
+create policy "Authenticated admins can manage site pages"
 on public.site_pages
 for all
 using (auth.role() = 'authenticated')
