@@ -7,7 +7,9 @@ export function getMailConfig() {
   const port = Number(process.env.MAIL_PORT?.trim() || 587);
   const secure = (process.env.MAIL_SECURE?.trim() || "false").toLowerCase() === "true" || port === 465;
   const user = process.env.MAIL_USER?.trim() || "";
-  const pass = process.env.MAIL_PASS?.trim() || "";
+  // Google shows App Passwords as four space-separated groups; the spaces are
+  // presentational and must not reach the SMTP auth.
+  const pass = process.env.MAIL_PASS?.replace(/\s+/g, "") || "";
   const to = process.env.MAIL_TO?.trim() || user || "";
 
   return {
