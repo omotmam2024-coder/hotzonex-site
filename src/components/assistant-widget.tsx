@@ -1,22 +1,24 @@
 "use client";
 
-import { Bot, Loader2, RefreshCw, Send, Sparkles, X } from "lucide-react";
+import { BookOpen, Bot, Loader2, RefreshCw, Send, Sparkles, X } from "lucide-react";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 
 type Message = {
   id: number;
   role: "user" | "assistant";
   text: string;
+  /** The part of the Customer Service Guide an answer was taken from. */
+  source?: string | null;
 };
 
 const GREETING =
-  "Hi! I am the Hotzonex assistant. Ask me about hotspot vouchers, home or office internet, Starlink, IT support, or website development.";
+  "Hi! I am the Hotzonex Wi-Fi assistant. Ask me about voucher prices, which network to join, opening hours, or our service policies.";
 
 const INITIAL_SUGGESTIONS = [
-  "What services does Hotzonex offer?",
-  "How can I buy a hotspot voucher?",
-  "Where are your locations?",
-  "Can you build a website for my business?",
+  "How much does a voucher cost?",
+  "Which network should I connect to?",
+  "What are your working hours?",
+  "Can I use one voucher on two devices?",
 ];
 
 const initialMessages: Message[] = [{ id: 0, role: "assistant", text: GREETING }];
@@ -80,7 +82,7 @@ export function AssistantWidget() {
           body: JSON.stringify({ question: trimmed }),
         });
 
-        const data = (await response.json()) as { answer?: string; suggestions?: string[] };
+        const data = (await response.json()) as { answer?: string; source?: string | null; suggestions?: string[] };
         if (ticket !== requestId.current) return;
 
         setMessages((current) => [
@@ -89,6 +91,7 @@ export function AssistantWidget() {
             id: nextId.current++,
             role: "assistant",
             text: data.answer || "I am not able to answer that right now.",
+            source: data.source,
           },
         ]);
         setSuggestions(data.suggestions?.slice(0, 4) ?? []);
@@ -154,7 +157,7 @@ export function AssistantWidget() {
           </span>
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-bold text-foreground">Hotzonex assistant</p>
-            <p className="truncate text-xs text-muted-foreground">Answers from our services and guide</p>
+            <p className="truncate text-xs text-muted-foreground">Answers from our Customer Service Guide</p>
           </div>
           <button
             type="button"
@@ -184,7 +187,10 @@ export function AssistantWidget() {
           className="flex-1 space-y-3 overflow-y-auto overscroll-contain px-4 py-4"
         >
           {messages.map((message) => (
-            <div key={message.id} className={message.role === "user" ? "flex justify-end" : "flex justify-start"}>
+            <div
+              key={message.id}
+              className={message.role === "user" ? "flex flex-col items-end" : "flex flex-col items-start"}
+            >
               <p
                 className={
                   message.role === "user"
@@ -194,6 +200,12 @@ export function AssistantWidget() {
               >
                 {message.text}
               </p>
+              {message.source && (
+                <p className="mt-1 flex max-w-[85%] items-center gap-1 px-1 text-[11px] leading-4 text-muted-foreground">
+                  <BookOpen className="h-3 w-3 shrink-0" />
+                  <span>{message.source}</span>
+                </p>
+              )}
             </div>
           ))}
 

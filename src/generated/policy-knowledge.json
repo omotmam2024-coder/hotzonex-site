@@ -1,0 +1,483 @@
+{
+  "source": "Hotzonex_policy.pdf",
+  "version": "1.2",
+  "chunks": [
+    {
+      "id": "info-quick-reference",
+      "kind": "info",
+      "section": "Quick Reference",
+      "heading": null,
+      "title": "Quick Reference",
+      "text": "Hotzonex Wi-Fi operates from three locations. Each one has its own networks, its own opening hours and its own price list.",
+      "context": null
+    },
+    {
+      "id": "info-our-locations",
+      "kind": "info",
+      "section": "Quick Reference",
+      "heading": null,
+      "title": "Our locations",
+      "text": "Location · Open · Wi-Fi network names · Vouchers From\nGorom Home Office · 8:00 AM – 10:00 PM · Wi-Fi runs 24/7 · HOTZONEX-WIFI · HOTZONEX-WIFI-2 & 5G · HOTZONEX-WIFI3 · 1,000 SSP\nJebel-Iraq Head Office · 8:00 AM – 11:00 PM · HOTZONEX-WIFI · HOTZONEX-WIFI-2 & 5G · HOTZONEX-GOLD & 5G · 1,500 SSP\nJebel-Iraq Sub Office · 8:00 AM – 11:00 PM · HOTZONEX-WIFI · HOTZONEX-WIFI3 & 5G · 2,000 SSP",
+      "context": null
+    },
+    {
+      "id": "info-your-voucher-works-only-where-you-bought-it",
+      "kind": "info",
+      "section": "Quick Reference",
+      "heading": "Our locations",
+      "title": "Your voucher works only where you bought it",
+      "text": "Your voucher works only where you bought it. Some network names appear at more than one location, but each office runs its own system. A voucher bought at Gorom will not work at Jebel-Iraq, and the reverse is also true.",
+      "context": null
+    },
+    {
+      "id": "info-getting-online-in-four-steps",
+      "kind": "info",
+      "section": "Quick Reference",
+      "heading": null,
+      "title": "Getting online in four steps",
+      "text": "1. Buy a voucher: At the Hotzonex office you are visiting. Vouchers are not sold anywhere else.\n2. Select the network: Open Wi-Fi settings and choose a HOTZONEX network at that location.\n3. Enter your code: Type the voucher code on the login page. Your time starts on activation.\n4. Need help?: Restart and reconnect first. Still stuck? Call +211 924 904 216.",
+      "context": null
+    },
+    {
+      "id": "prices-voucher-prices-by-location",
+      "kind": "prices",
+      "section": "Voucher Prices by Location",
+      "heading": null,
+      "title": "Voucher Prices by Location",
+      "text": "Always use the table for the office where you are buying. All vouchers are unlimited for their period and work on one device at a time.",
+      "context": null
+    },
+    {
+      "id": "prices-gorom-home-office",
+      "kind": "prices",
+      "section": "Voucher Prices by Location",
+      "heading": null,
+      "title": "Gorom Home Office",
+      "text": "Package · Price · Cost per hour · Good for\n1 hour · 1,000 SSP · 1,000 SSP · Quick messages, a few emails\n3 hours · 2,000 SSP · 667 SSP · A study or work session\n5 hours · 3,000 SSP · 600 SSP · Meetings and downloads\n8 hours · 4,500 SSP · 563 SSP · A full working day\n24 hours · 6,000 SSP · 250 SSP · A full day and night\n1 week · 15,000 SSP · 89 SSP · Best value — 7 full days",
+      "context": null
+    },
+    {
+      "id": "prices-jebel-iraq-head-office",
+      "kind": "prices",
+      "section": "Voucher Prices by Location",
+      "heading": null,
+      "title": "Jebel-Iraq Head Office",
+      "text": "Package · Price · Cost per hour · Good for\n1 hour · 1,500 SSP · 1,500 SSP · Quick messages, a few emails\n1 hour 30 min · 2,000 SSP · 1,333 SSP · A short browsing session\n2 hours · 3,000 SSP · 1,500 SSP · Social media and browsing\n3 hours · 4,000 SSP · 1,333 SSP · A study or work session\n4 hours · 5,000 SSP · 1,250 SSP · Half a working day\n5 hours · 6,000 SSP · 1,200 SSP · Meetings and downloads\n8 hours · 8,000 SSP · 1,000 SSP · A full working day\n1 week · 25,000 SSP · 149 SSP · Best value — 7 full days",
+      "context": null
+    },
+    {
+      "id": "prices-jebel-iraq-sub-office",
+      "kind": "prices",
+      "section": "Voucher Prices by Location",
+      "heading": null,
+      "title": "Jebel-Iraq Sub Office",
+      "text": "Package · Price · Where it sits in the range\nLITE · 2,000 SSP · Entry package\nPopular · 3,000 SSP · Our most chosen package\nPower · 5,000 SSP · For heavier use\nMax · 10,000 SSP · Our largest package",
+      "context": null
+    },
+    {
+      "id": "prices-ask-before-you-pay-at-the-sub-office",
+      "kind": "prices",
+      "section": "Voucher Prices by Location",
+      "heading": "Jebel-Iraq Sub Office",
+      "title": "Ask before you pay at the Sub Office",
+      "text": "Ask before you pay at the Sub Office. The LITE, Popular, Power and Max packages are explained at the counter. Please ask our staff which package suits your visit before paying — vouchers cannot be refunded once activated.",
+      "context": null
+    },
+    {
+      "id": "prices-longer-costs-less",
+      "kind": "prices",
+      "section": "Voucher Prices by Location",
+      "heading": "Understanding the prices",
+      "title": "Longer costs less",
+      "text": "The weekly voucher is by far the cheapest way to connect — about 89 SSP per hour at Gorom and 149 SSP per hour at Jebel-Iraq Head Office, against 1,000 to 1,500 SSP for a single hour.",
+      "context": null
+    },
+    {
+      "id": "prices-your-time-runs-continuously",
+      "kind": "prices",
+      "section": "Voucher Prices by Location",
+      "heading": "Understanding the prices",
+      "title": "Your time runs continuously",
+      "text": "A voucher counts down from the moment it is activated, not from the hours you actually browse. Buy the length that matches how long you will be at the location.",
+      "context": null
+    },
+    {
+      "id": "prices-one-device-one-location",
+      "kind": "prices",
+      "section": "Voucher Prices by Location",
+      "heading": "Understanding the prices",
+      "title": "One device, one location",
+      "text": "Every package covers a single device, and a voucher only works at the office where it was bought. A second device needs a second voucher.",
+      "context": null
+    },
+    {
+      "id": "prices-prices-differ-between-our-locations",
+      "kind": "prices",
+      "section": "Voucher Prices by Location",
+      "heading": "Understanding the prices",
+      "title": "Prices differ between our locations",
+      "text": "Prices differ between our locations. The price list displayed at the office where you buy your voucher is the one that applies. If you are unsure, ask our staff before paying.",
+      "context": null
+    },
+    {
+      "id": "policy-service-policies",
+      "kind": "policy",
+      "section": "Service Policies",
+      "heading": null,
+      "title": "Service Policies",
+      "text": "By purchasing and activating a Hotzonex voucher, you agree to the following terms of use. They exist to keep the network fast, fair and safe for every customer.",
+      "context": null
+    },
+    {
+      "id": "policy-3-1-network-access",
+      "kind": "policy",
+      "section": "Service Policies",
+      "heading": null,
+      "title": "3.1 Network access",
+      "text": "1. Customers must connect only to the official HOTZONEX networks listed for their location in Section 01.\n2. Unauthorised access to admin routers is strictly prohibited.\n3. Accessing private staff networks is not allowed.\n4. Customers may not attempt to hack, bypass or manipulate network security.\n5. Connecting to fake or non-Hotzonex networks is unsafe and prohibited.",
+      "context": null
+    },
+    {
+      "id": "policy-3-2-voucher-usage",
+      "kind": "policy",
+      "section": "Service Policies",
+      "heading": null,
+      "title": "3.2 Voucher usage",
+      "text": "6. All internet access is provided through prepaid vouchers.\n7. Each voucher is valid for one device at a time.\n8. A voucher is valid only at the Hotzonex location where it was purchased.\n9. Sharing one voucher across several devices at the same time is not allowed.\n10. Voucher sharing reduces internet quality for everyone and violates our service rules.\n11. Vouchers must be purchased directly from a Hotzonex Wi-Fi office.\n12. Reselling vouchers to others is not permitted.\n13. Customers are responsible for keeping their voucher codes safe.\n14. Lost or stolen vouchers cannot be replaced once activated.",
+      "context": null
+    },
+    {
+      "id": "policy-3-3-payment-refunds",
+      "kind": "policy",
+      "section": "Service Policies",
+      "heading": null,
+      "title": "3.3 Payment & refunds",
+      "text": "15. All payments must be made in South Sudanese Pounds (SSP).\n16. Voucher purchases are non-refundable once activated.\n17. Customers should verify voucher details before purchase.\n18. Hotzonex is not responsible for an incorrect voucher chosen by the customer.\n19. Refunds are not provided for unused or partially used vouchers.\n20. Prices differ between Hotzonex locations. The price list displayed at the office where you buy applies to your voucher.",
+      "context": null
+    },
+    {
+      "id": "policy-3-4-fair-usage",
+      "kind": "policy",
+      "section": "Service Policies",
+      "heading": null,
+      "title": "3.4 Fair usage",
+      "text": "21. Customers must use the internet responsibly and legally.\n22. Illegal activities such as piracy, hacking or spamming are prohibited.\n23. Uploading or sharing harmful content is not allowed.\n24. Bandwidth may be managed during peak hours so that access stays fair for all.\n25. Abusive usage that negatively affects other customers is prohibited.\n26. Heavy downloads and streaming may be restricted during busy hours.",
+      "context": null
+    },
+    {
+      "id": "policy-3-5-customer-conduct",
+      "kind": "policy",
+      "section": "Service Policies",
+      "heading": null,
+      "title": "3.5 Customer conduct",
+      "text": "27. Customers must respect Hotzonex staff at all times.\n28. Customers must follow staff instructions regarding Wi-Fi use.\n29. Misuse of the service may result in temporary suspension.\n30. Repeated violations may result in permanent termination of access.\n31. Harassment or abusive behaviour toward staff or other users is not tolerated.",
+      "context": null
+    },
+    {
+      "id": "policy-3-6-support",
+      "kind": "policy",
+      "section": "Service Policies",
+      "heading": null,
+      "title": "3.6 Support",
+      "text": "32. Customers facing issues should first restart their device and reconnect before contacting support.\n33. For further assistance, contact the Hotzonex Support Team on +211 924 904 216 or visit the office you are using.",
+      "context": null
+    },
+    {
+      "id": "policy-how-we-enforce-these-policies",
+      "kind": "policy",
+      "section": "Service Policies",
+      "heading": "3.6 Support",
+      "title": "How we enforce these policies",
+      "text": "How we enforce these policies. A first or minor breach normally results in a warning or a temporary suspension of access. Serious or repeated breaches — such as tampering with network equipment, reselling vouchers or abusing staff — may lead to permanent termination without a refund.",
+      "context": null
+    },
+    {
+      "id": "faq-how-much-does-a-voucher-cost",
+      "kind": "faq",
+      "section": "Frequently Asked Questions",
+      "heading": "Prices",
+      "title": "How much does a voucher cost?",
+      "text": "It depends on the location. At Gorom Home Office vouchers start at 1,000 SSP for 1 hour; at Jebel-Iraq Head Office from 1,500 SSP for 1 hour; at the Jebel-Iraq Sub Office packages start at 2,000 SSP. The full lists are in Section 02.",
+      "context": null
+    },
+    {
+      "id": "faq-why-do-prices-differ-between-locations",
+      "kind": "faq",
+      "section": "Frequently Asked Questions",
+      "heading": "Prices",
+      "title": "Why do prices differ between locations?",
+      "text": "Each location runs on its own equipment and internet connection, so each office sets its own price list. The list displayed where you buy is the one that applies.",
+      "context": null
+    },
+    {
+      "id": "faq-do-you-have-daily-or-weekly-packages",
+      "kind": "faq",
+      "section": "Frequently Asked Questions",
+      "heading": "Prices",
+      "title": "Do you have daily or weekly packages?",
+      "text": "Weekly vouchers are available at Gorom Home Office (15,000 SSP) and Jebel-Iraq Head Office (25,000 SSP). A 24-hour voucher (6,000 SSP) is currently offered at Gorom Home Office only.",
+      "context": null
+    },
+    {
+      "id": "faq-which-package-gives-the-best-value",
+      "kind": "faq",
+      "section": "Frequently Asked Questions",
+      "heading": "Prices",
+      "title": "Which package gives the best value?",
+      "text": "The longer the package, the less you pay per hour. The weekly voucher works out at roughly 89 SSP per hour at Gorom and 149 SSP per hour at Jebel-Iraq Head Office, against 1,000–1,500 SSP for a single hour. If you use Hotzonex most days, the weekly voucher is the cheapest way to connect.",
+      "context": null
+    },
+    {
+      "id": "faq-do-you-offer-discounts",
+      "kind": "faq",
+      "section": "Frequently Asked Questions",
+      "heading": "Prices",
+      "title": "Do you offer discounts?",
+      "text": "There are no separate discounts. The longer packages are already priced lower per hour — that is where the saving is.",
+      "context": null
+    },
+    {
+      "id": "faq-what-do-lite-popular-power-and-max-include",
+      "kind": "faq",
+      "section": "Frequently Asked Questions",
+      "heading": "Prices",
+      "title": "What do LITE, Popular, Power and Max include?",
+      "text": "These are the packages sold at the Jebel-Iraq Sub Office, priced from 2,000 to 10,000 SSP. Please ask our staff at that office which package suits your visit before paying.",
+      "context": null
+    },
+    {
+      "id": "faq-how-do-i-get-a-voucher",
+      "kind": "faq",
+      "section": "Frequently Asked Questions",
+      "heading": "Vouchers",
+      "title": "How do I get a voucher?",
+      "text": "Vouchers are sold only at a Hotzonex Wi-Fi office. We do not sell through agents or resellers.",
+      "context": null
+    },
+    {
+      "id": "faq-can-i-use-a-voucher-at-a-different-hotzonex-location",
+      "kind": "faq",
+      "section": "Frequently Asked Questions",
+      "heading": "Vouchers",
+      "title": "Can I use a voucher at a different Hotzonex location?",
+      "text": "No. Each office runs its own system, so a voucher works only where it was bought — even if you see a network with the same name at another location.",
+      "context": null
+    },
+    {
+      "id": "faq-can-i-use-one-voucher-on-two-devices",
+      "kind": "faq",
+      "section": "Frequently Asked Questions",
+      "heading": "Vouchers",
+      "title": "Can I use one voucher on two devices?",
+      "text": "No. Each voucher works on one device at a time.",
+      "context": null
+    },
+    {
+      "id": "faq-how-long-is-a-voucher-valid-after-purchase",
+      "kind": "faq",
+      "section": "Frequently Asked Questions",
+      "heading": "Vouchers",
+      "title": "How long is a voucher valid after purchase?",
+      "text": "A voucher stays valid until the purchased time runs out, counted continuously from the moment it is activated — not only while you are browsing. A 24-hour voucher activated at 9:00 AM ends at 9:00 AM the next day.",
+      "context": null
+    },
+    {
+      "id": "faq-can-i-give-my-voucher-to-someone-else",
+      "kind": "faq",
+      "section": "Frequently Asked Questions",
+      "heading": "Vouchers",
+      "title": "Can I give my voucher to someone else?",
+      "text": "Yes, you may pass an unused voucher to another person — but it can still only be used on one device at a time, at the location where it was bought, and reselling vouchers is not permitted.",
+      "context": null
+    },
+    {
+      "id": "faq-what-if-i-lose-my-voucher-code",
+      "kind": "faq",
+      "section": "Frequently Asked Questions",
+      "heading": "Vouchers",
+      "title": "What if I lose my voucher code?",
+      "text": "Keep your code safe. Once a voucher has been activated it cannot be replaced if it is lost or stolen.",
+      "context": null
+    },
+    {
+      "id": "faq-which-network-should-i-connect-to",
+      "kind": "faq",
+      "section": "Frequently Asked Questions",
+      "heading": "Connecting",
+      "title": "Which network should I connect to?",
+      "text": "It depends where you are. Gorom Home Office: HOTZONEX-WIFI, HOTZONEX-WIFI-2 (and 5G) or HOTZONEX-WIFI3. Jebel-Iraq Head Office: HOTZONEX-WIFI, HOTZONEX-WIFI-2 (and 5G) or HOTZONEX-GOLD (and 5G). Jebel-Iraq Sub Office: HOTZONEX-WIFI or HOTZONEX-WIFI3 (and 5G).",
+      "context": null
+    },
+    {
+      "id": "faq-what-if-i-forget-the-network-name",
+      "kind": "faq",
+      "section": "Frequently Asked Questions",
+      "heading": "Connecting",
+      "title": "What if I forget the network name?",
+      "text": "Look for any network beginning with HOTZONEX in your Wi-Fi settings. If more than one appears, ask our staff which network serves that office.",
+      "context": null
+    },
+    {
+      "id": "faq-what-is-the-difference-between-the-normal-and-5g-networks",
+      "kind": "faq",
+      "section": "Frequently Asked Questions",
+      "heading": "Connecting",
+      "title": "What is the difference between the normal and 5G networks?",
+      "text": "Networks marked 5G run on the 5 GHz band: faster, but they work best when you are close to the access point. The others run on 2.4 GHz, which is slower but reaches further. If your signal is weak, switch to the network without 5G in the name.",
+      "context": null
+    },
+    {
+      "id": "faq-the-internet-is-slow-what-can-i-do",
+      "kind": "faq",
+      "section": "Frequently Asked Questions",
+      "heading": "Connecting",
+      "title": "The internet is slow — what can I do?",
+      "text": "Restart your device and reconnect to the nearest Hotzonex network. If the problem continues, call support on +211 924 904 216.",
+      "context": null
+    },
+    {
+      "id": "faq-can-i-stream-videos-or-join-online-meetings",
+      "kind": "faq",
+      "section": "Frequently Asked Questions",
+      "heading": "Connecting",
+      "title": "Can I stream videos or join online meetings?",
+      "text": "Yes. The network supports browsing, streaming and online meetings. During busy hours, heavy downloads and streaming may be slowed so that everyone gets fair access.",
+      "context": null
+    },
+    {
+      "id": "faq-what-are-your-working-hours",
+      "kind": "faq",
+      "section": "Frequently Asked Questions",
+      "heading": "Hours, safety and other services",
+      "title": "What are your working hours?",
+      "text": "Gorom Home Office is open 8:00 AM to 10:00 PM, and its Wi-Fi signal runs 24 hours a day. Jebel-Iraq Head Office and Sub Office are open 8:00 AM to 11:00 PM. Vouchers and support are available during office hours.",
+      "context": null
+    },
+    {
+      "id": "faq-is-hotzonex-wi-fi-safe-for-online-payments",
+      "kind": "faq",
+      "section": "Frequently Asked Questions",
+      "heading": "Hours, safety and other services",
+      "title": "Is Hotzonex Wi-Fi safe for online payments?",
+      "text": "Yes — Hotzonex uses secure connections. As on any network, always confirm you are on a trusted website before entering payment details.",
+      "context": null
+    },
+    {
+      "id": "faq-do-you-store-customer-browsing-history",
+      "kind": "faq",
+      "section": "Frequently Asked Questions",
+      "heading": "Hours, safety and other services",
+      "title": "Do you store customer browsing history?",
+      "text": "We keep only the minimal records required by law. Your privacy is our priority.",
+      "context": null
+    },
+    {
+      "id": "faq-how-do-i-contact-customer-support",
+      "kind": "faq",
+      "section": "Frequently Asked Questions",
+      "heading": "Hours, safety and other services",
+      "title": "How do I contact customer support?",
+      "text": "Call +211 924 904 216 or visit your nearest Hotzonex Wi-Fi office.",
+      "context": null
+    },
+    {
+      "id": "faq-what-should-i-do-if-my-voucher-doesn-t-work",
+      "kind": "faq",
+      "section": "Frequently Asked Questions",
+      "heading": "Hours, safety and other services",
+      "title": "What should I do if my voucher doesn't work?",
+      "text": "First restart your device and reconnect. If it still fails, contact support or visit the office where you bought it and bring the voucher with you.",
+      "context": null
+    },
+    {
+      "id": "faq-do-you-provide-printing-services",
+      "kind": "faq",
+      "section": "Frequently Asked Questions",
+      "heading": "Hours, safety and other services",
+      "title": "Do you provide printing services?",
+      "text": "Yes. Hotzonex offers printing, but it is managed separately from Wi-Fi. Please contact the Hotzonex Printing Desk for details and prices.",
+      "context": null
+    },
+    {
+      "id": "info-other-services-contact",
+      "kind": "info",
+      "section": "Other Services & Contact",
+      "heading": null,
+      "title": "Other Services & Contact",
+      "text": "Our team is here every day. For anything not covered in this guide, please speak to us directly.",
+      "context": null
+    },
+    {
+      "id": "info-hotzonex-wi-fi",
+      "kind": "info",
+      "section": "Other Services & Contact",
+      "heading": null,
+      "title": "Hotzonex Wi-Fi",
+      "text": "+211 924 904 216 — Calls and messages welcome\nAt our offices — Valid only where bought\nGorom 8 AM – 10 PM — Jebel-Iraq offices 8 AM – 11 PM",
+      "context": null
+    },
+    {
+      "id": "info-other-services-at-our-offices",
+      "kind": "info",
+      "section": "Other Services & Contact",
+      "heading": null,
+      "title": "Other services at our offices",
+      "text": "Beyond public Wi-Fi, Hotzonex provides network and connectivity services for homes, offices and businesses. These are quoted per job — speak to our team or call +211 924 904 216 for a price.",
+      "context": null
+    },
+    {
+      "id": "info-mikrotik-configuration",
+      "kind": "info",
+      "section": "Other Services & Contact",
+      "heading": "Other services at our offices",
+      "title": "MikroTik configuration",
+      "text": "Router and hotspot setup on MikroTik RouterOS, including user and voucher systems, bandwidth management, failover and secure remote access.",
+      "context": "Beyond public Wi-Fi, Hotzonex provides network and connectivity services for homes, offices and businesses. These are quoted per job — speak to our team or call +211 924 904 216 for a price."
+    },
+    {
+      "id": "info-starlink-hotspot-setup",
+      "kind": "info",
+      "section": "Other Services & Contact",
+      "heading": "Other services at our offices",
+      "title": "Starlink & hotspot setup",
+      "text": "Starlink installation and integration, turning a single connection into a managed hotspot for a home, office, guesthouse or compound.",
+      "context": "Beyond public Wi-Fi, Hotzonex provides network and connectivity services for homes, offices and businesses. These are quoted per job — speak to our team or call +211 924 904 216 for a price."
+    },
+    {
+      "id": "info-technical-support",
+      "kind": "info",
+      "section": "Other Services & Contact",
+      "heading": "Other services at our offices",
+      "title": "Technical support",
+      "text": "Network troubleshooting, equipment advice and supply, installation and ongoing maintenance, on site or remotely.",
+      "context": "Beyond public Wi-Fi, Hotzonex provides network and connectivity services for homes, offices and businesses. These are quoted per job — speak to our team or call +211 924 904 216 for a price."
+    },
+    {
+      "id": "info-printing-services",
+      "kind": "info",
+      "section": "Other Services & Contact",
+      "heading": "Other services at our offices",
+      "title": "Printing services",
+      "text": "Printing services are also available, managed separately from the Wi-Fi business. For printing enquiries, pricing or turnaround times, please contact the Hotzonex Printing Desk.",
+      "context": null
+    },
+    {
+      "id": "info-your-privacy",
+      "kind": "info",
+      "section": "Other Services & Contact",
+      "heading": null,
+      "title": "Your privacy",
+      "text": "Hotzonex keeps only the minimal records required by law. We do not build profiles of customer browsing, and access records are used solely for network security, troubleshooting and legal compliance. Our network uses secure connections, but customers should still make sure they are visiting trusted websites when entering payment or personal details.",
+      "context": null
+    },
+    {
+      "id": "info-about-this-document",
+      "kind": "info",
+      "section": "Other Services & Contact",
+      "heading": null,
+      "title": "About this document",
+      "text": "This guide combines the Hotzonex Wi-Fi Service Policies and the Customer FAQ into a single reference for customers and staff, covering all three locations and the other services offered at our offices. It replaces the two separate documents previously issued. Version 1.2 • Effective September 2026 • All prices are in South Sudanese Pounds (SSP) and are subject to change. Prices, networks and opening hours are set per location; the information displayed at the office where you buy always applies.",
+      "context": null
+    }
+  ]
+}
