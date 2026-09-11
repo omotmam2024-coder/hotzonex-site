@@ -1,6 +1,7 @@
 "use client";
 
-import { BookOpen, Bot, Loader2, RefreshCw, Send, Sparkles, X } from "lucide-react";
+import { BookOpen, Loader2, RefreshCw, Send, Sparkles, X } from "lucide-react";
+import Image from "next/image";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 
 type Message = {
@@ -152,9 +153,7 @@ export function AssistantWidget() {
         className="fixed bottom-24 left-4 right-4 z-50 flex max-h-[min(32rem,calc(100vh-8rem))] flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-2xl sm:left-5 sm:right-auto sm:w-[24rem]"
       >
         <div className="flex items-center gap-3 border-b border-border bg-muted/30 px-4 py-3">
-          <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
-            <Bot className="h-5 w-5" />
-          </span>
+          <Image src="/brand/hotzonex-logo.png" alt="" width={40} height={40} unoptimized className="h-10 w-10 shrink-0" />
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-bold text-foreground">Hotzonex assistant</p>
             <p className="truncate text-xs text-muted-foreground">Answers from our Customer Service Guide</p>

@@ -39,10 +39,27 @@ export const metadata: Metadata = {
   ],
 };
 
+/** Tells search engines who runs the site and which image is the company logo. */
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: siteConfig.name,
+  url: siteConfig.url,
+  logo: `${siteConfig.url}/brand/hotzonex-logo-512.png`,
+  email: siteConfig.contact.email,
+  telephone: siteConfig.contact.phone,
+  address: { "@type": "PostalAddress", addressLocality: "Juba", addressCountry: "SS" },
+};
+
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="min-h-full bg-background text-foreground">
+        <script
+          type="application/ld+json"
+          // "<" is escaped so the payload can never close the script tag early.
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c") }}
+        />
         <div className="flex min-h-screen flex-col">
           <Header />
           <main className="flex-1">{children}</main>

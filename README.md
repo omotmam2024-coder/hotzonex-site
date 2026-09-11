@@ -21,6 +21,7 @@ by WhatsApp, phone and email.
 | `npm run build`     | Rebuilds the knowledge base from the policy PDF, then `next build`  |
 | `npm start`         | Serves the production build                                         |
 | `npm run knowledge` | Rebuilds only the knowledge base (`src/generated/policy-knowledge.json`) |
+| `npm run brand`     | Regenerates the logo files from `img/logo.png`                      |
 | `npm run lint`      | ESLint                                                              |
 | `npm run typecheck` | TypeScript                                                          |
 
@@ -62,6 +63,16 @@ by hand, so update it too if offices, hours or networks change.
 | Contact details, offices, services, quote types, service FAQs | `src/config/site.ts` |
 | Blog posts                                | `src/config/content.ts` |
 | Assistant vocabulary (synonyms, routing)  | `src/lib/assistant.ts`  |
+
+### Logo
+
+`img/logo.png` is the original artwork (1024px, 1.8 MB). `npm run brand` crops it to the badge and writes the
+small copies the site actually loads: `public/brand/hotzonex-logo.png` (header, footer, assistant),
+`public/brand/hotzonex-logo-512.png` (social preview card and search engines), and the browser and home-screen
+icons `src/app/icon.png`, `src/app/apple-icon.png` and `src/app/favicon.ico`. To change the logo, replace
+`img/logo.png` (a transparent background works best), run `npm run brand`, and commit the results.
+
+### Photos
 
 Images are loaded from Unsplash through a custom `next/image` loader (`src/lib/image-loader.ts`), which serves a
 size matched to each screen without using Vercel's image optimisation quota.

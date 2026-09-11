@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
@@ -26,10 +27,9 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3 text-sm font-semibold tracking-wide text-foreground">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-base font-black text-primary-foreground">
-            H
-          </span>
-          <span>{siteConfig.name}</span>
+          {/* The name beside it labels the link, so the badge itself stays decorative (alt=""). */}
+          <Image src="/brand/hotzonex-logo.png" alt="" width={44} height={44} unoptimized preload className="h-11 w-11" />
+          <span className="text-base font-bold">{siteConfig.name}</span>
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex" aria-label="Main navigation">

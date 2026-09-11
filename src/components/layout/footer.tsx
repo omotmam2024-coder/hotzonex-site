@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { siteConfig } from "@/config/site";
@@ -7,7 +8,8 @@ export function Footer() {
     <footer className="border-t border-border bg-muted/20">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-4 lg:px-8">
         <div className="space-y-4">
-          <Link href="/" className="text-lg font-bold text-foreground">
+          <Link href="/" className="flex items-center gap-3 text-lg font-bold text-foreground">
+            <Image src="/brand/hotzonex-logo.png" alt="" width={56} height={56} unoptimized className="h-14 w-14" />
             {siteConfig.name}
           </Link>
           <p className="max-w-xs text-sm text-muted-foreground">
