@@ -22,6 +22,9 @@ export type AssistantReply = {
 
 const PHONE = siteConfig.contact.phone;
 
+/** Longer input is not a customer question, and bounds the work per request. */
+export const MAX_QUESTION_LENGTH = 500;
+
 const OUT_OF_SCOPE =
   `Thank you for your question. I can only answer questions covered in the Hotzonex Wi-Fi Customer Service Guide — ` +
   `voucher prices, Wi-Fi networks, opening hours, service policies and support. For anything else, our team will be ` +

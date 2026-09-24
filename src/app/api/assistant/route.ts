@@ -1,10 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { siteConfig } from "@/config/site";
-import { getAssistantAnswer } from "@/lib/assistant";
-
-/** Longer input is not a customer question, and bounds the work per request. */
-const MAX_QUESTION_LENGTH = 500;
+import { getAssistantAnswer, MAX_QUESTION_LENGTH } from "@/lib/assistant";
 
 export async function POST(request: Request) {
   let question = "";

@@ -12,8 +12,9 @@ npm install
 npm run dev        # http://localhost:3000
 ```
 
-No environment variables are needed. The site has no database, forms or accounts; customers reach Hotzonex
-by WhatsApp, phone and email.
+No environment variables are needed to run the site itself. The site has no database, forms or accounts;
+customers reach Hotzonex by WhatsApp, phone and email. The WhatsApp *assistant* (see below) is optional and
+needs its own credentials.
 
 | Script              | What it does                                                        |
 | ------------------- | ------------------------------------------------------------------- |
@@ -30,8 +31,9 @@ by WhatsApp, phone and email.
 `doc/Hotzonex_policy.pdf` (the Hotzonex Wi-Fi Customer Service Guide) drives everything customers rely on
 for accuracy:
 
-- **The assistant** (chat button, bottom-left) answers only from the guide, quoting its wording and naming the
-  section it came from. Questions the guide does not cover get a polite referral to the support line.
+- **The assistant** (chat button, bottom-left, and WhatsApp — see below) answers only from the guide, quoting its
+  wording and naming the section it came from. Questions the guide does not cover get a polite referral to the
+  support line.
 - **Pricing** shows each office's voucher price list and the guide's notes on pricing.
 - **FAQ** shows the guide's questions and answers, followed by the service FAQs in `src/config/site.ts`.
 - **Terms of Use** shows the guide's numbered service policies; **Privacy** shows its privacy statement.
@@ -55,6 +57,37 @@ shipping an empty assistant.
 
 The office list in `src/config/site.ts` (names, hours, Wi-Fi networks, starting prices) is copied from the guide
 by hand, so update it too if offices, hours or networks change.
+
+## WhatsApp assistant
+
+Customers can message the Hotzonex WhatsApp number and get the same guide-only answers as the chat widget,
+automatically. This runs on Meta's WhatsApp Cloud API (no third-party bot platform, no extra hosting — the
+webhook is `/api/whatsapp` on hotzonex.dev) and shares `src/lib/assistant.ts`, so a question gets the same
+answer whether it is typed on the site or sent on WhatsApp.
+
+- `src/app/api/whatsapp/route.ts` — the webhook: `GET` handles Meta's verification handshake, `POST` receives
+  each incoming message, looks up the answer, and replies.
+- `src/lib/whatsapp.ts` — parses webhook payloads, checks Meta's request signature, and sends replies through
+  the Cloud API.
+
+### Setup
+
+1. In [Meta for Developers](https://developers.facebook.com/), create an app with the **WhatsApp** product added
+   (or use an existing WhatsApp Business Account). Under **WhatsApp → API Setup** you get a temporary access
+   token and a **Phone number ID**; for a bot that keeps working, generate a permanent token instead (System
+   User → Assets → WhatsApp Accounts → generate token with `whatsapp_business_messaging` permission).
+2. Set these in the Vercel project's environment variables (see `.env.example`):
+   - `WHATSAPP_ACCESS_TOKEN` — the permanent (or temporary, for testing) access token.
+   - `WHATSAPP_PHONE_NUMBER_ID` — from API Setup.
+   - `WHATSAPP_VERIFY_TOKEN` — any string you make up; you will enter the same value in step 3.
+   - `WHATSAPP_APP_SECRET` — App Dashboard → Settings → Basic → App Secret. Optional but recommended: without
+     it, the webhook cannot confirm a request actually came from Meta.
+3. In **WhatsApp → Configuration**, set the webhook callback URL to `https://hotzonex.dev/api/whatsapp` and the
+   verify token to the same `WHATSAPP_VERIFY_TOKEN` value, then subscribe to the `messages` field.
+4. Redeploy so the new environment variables take effect, then message the WhatsApp number to test.
+
+Only text messages get an automatic answer; other message types (images, voice notes, locations, etc.) get a
+short reply asking the customer to type their question, or to call the support line directly.
 
 ## Editing other content
 
