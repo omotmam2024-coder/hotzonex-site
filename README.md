@@ -1,6 +1,6 @@
 # Hotzonex website
 
-Marketing site and customer assistant for **Hotzonex** — Wi-Fi hotspot vouchers, home and office internet,
+Marketing site for **Hotzonex** — Wi-Fi hotspot vouchers, home and office internet,
 Starlink and MikroTik setup, IT support, and website/software development in Juba, South Sudan.
 
 Live at <https://www.hotzonex.dev>. Built with Next.js 16 (App Router), React 19, TypeScript and Tailwind CSS 4.
@@ -30,15 +30,14 @@ by WhatsApp, phone and email.
 `doc/Hotzonex_policy.pdf` (the Hotzonex Wi-Fi Customer Service Guide) drives everything customers rely on
 for accuracy:
 
-- **The assistant** (chat button, bottom-left) answers only from the guide, quoting its wording and naming the
-  section it came from. Questions the guide does not cover get a polite referral to the support line.
 - **Pricing** shows each office's voucher price list and the guide's notes on pricing.
 - **FAQ** shows the guide's questions and answers, followed by the service FAQs in `src/config/site.ts`.
 - **Terms of Use** shows the guide's numbered service policies; **Privacy** shows its privacy statement.
 
 `scripts/build-knowledge.mjs` splits the PDF into sections (FAQ answers, policy sections, price lists, callouts)
-using its typography, and writes `src/generated/policy-knowledge.json`. Pages and the assistant read that file
-through `src/lib/guide.ts`; nothing parses the PDF at request time.
+using its typography, and writes `src/generated/policy-knowledge.json`. Pages read that file
+through `src/lib/guide.ts`; nothing parses the PDF at request time. The guide's cross-references such as "in Section 02" are reworded
+to point at the matching site page (`SECTION_PAGES` in the script).
 
 ### Updating the guide
 
@@ -46,12 +45,12 @@ through `src/lib/guide.ts`; nothing parses the PDF at request time.
 2. Run `npm run knowledge`. It prints a summary such as
    `Knowledge base: 53 chunks (13 info, 9 prices, 8 policy, 23 faq)`. Check the counts look right for the new
    version.
-3. Check `/pricing`, `/faq` and `/terms` with `npm run dev`, and ask the assistant a few questions.
+3. Check `/pricing`, `/faq` and `/terms` with `npm run dev`, and check the answers read correctly.
 4. Commit the PDF **and** `src/generated/policy-knowledge.json`, then push.
 
 The extractor expects the current layout: bold section headings, `Q` before each question, numbered policies and
 tables with an all-caps header row. If a redesign breaks that, the build fails with a message rather than
-shipping an empty assistant.
+shipping empty price lists or FAQs.
 
 The office list in `src/config/site.ts` (names, hours, Wi-Fi networks, starting prices) is copied from the guide
 by hand, so update it too if offices, hours or networks change.
@@ -61,13 +60,11 @@ by hand, so update it too if offices, hours or networks change.
 | Content                                   | File                    |
 | ----------------------------------------- | ----------------------- |
 | Contact details, offices, services, quote types, service FAQs | `src/config/site.ts` |
-| Blog posts                                | `src/config/content.ts` |
-| Assistant vocabulary (synonyms, routing)  | `src/lib/assistant.ts`  |
 
 ### Logo
 
 `img/logo.png` is the original artwork (1024px, 1.8 MB). `npm run brand` crops it to the badge and writes the
-small copies the site actually loads: `public/brand/hotzonex-logo.png` (header, footer, assistant),
+small copies the site actually loads: `public/brand/hotzonex-logo.png` (header, footer, 404 page),
 `public/brand/hotzonex-logo-512.png` (social preview card and search engines), and the browser and home-screen
 icons `src/app/icon.png`, `src/app/apple-icon.png` and `src/app/favicon.ico`. To change the logo, replace
 `img/logo.png` (a transparent background works best), run `npm run brand`, and commit the results.
@@ -86,7 +83,8 @@ The site's address is `siteConfig.url` in `src/config/site.ts` (used by the site
 search-engine data). `hotzonex.dev` redirects to `https://www.hotzonex.dev` (set in the Vercel project's Domains
 settings), and the old `hotzonex-site.vercel.app` redirects there too. Keep the two in agreement: a `www` → apex rule
 in `next.config.ts` would loop with Vercel's apex → `www` redirect and take the site down. The `vercel.app` redirect,
-the security headers and the redirect from the retired `/locations/jebel-iraq` URL are set in `next.config.ts`;
+the security headers and the redirects from retired URLs (`/locations/jebel-iraq`, `/blog`, `/search`) are
+set in `next.config.ts`;
 `/sitemap.xml`, `/robots.txt` and the social preview image are generated from `src/app/`.
 
 `supabase/schema.sql` is not used by the site today. It is kept as a starting point for a future admin area.

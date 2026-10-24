@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
-import { guideChunks, guideName, lowestVoucherPrice, priceTables } from "@/lib/guide";
+import { guideChunks, lowestVoucherPrice, priceTables } from "@/lib/guide";
 import { officeAlt, officeImages } from "@/lib/office-images";
 
 export const metadata: Metadata = {
@@ -123,7 +123,7 @@ export default function PricingPage() {
         <div>
           <h2 className="text-xl font-black text-foreground">Vouchers are sold only at our offices.</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Buy at the office you are visiting — the price list displayed there always applies. Source: {guideName}.
+            Buy at the office you are visiting — the price list displayed there always applies.
           </p>
         </div>
         <Button asChild>

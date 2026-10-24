@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { siteConfig } from "@/config/site";
-import { guideChunk, guideName, policyNotes, policySections } from "@/lib/guide";
+import { guideChunk, policyNotes, policySections } from "@/lib/guide";
 
 export const metadata: Metadata = {
   title: "Terms of Use",
@@ -57,7 +57,6 @@ export default function TermsPage() {
           Questions about these terms? Call or message {siteConfig.contact.phone}, email {siteConfig.contact.email}, or
           visit your nearest Hotzonex office.
         </p>
-        <p className="text-xs">Source: {guideName}.</p>
       </section>
     </div>
   );

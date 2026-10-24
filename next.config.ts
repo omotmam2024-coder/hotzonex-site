@@ -33,6 +33,9 @@ const nextConfig: NextConfig = {
       },
       // "Jebel Iraq" was listed separately from the Head Office it duplicated.
       { source: "/locations/jebel-iraq", destination: "/locations/head-office", permanent: true },
+      // The blog and site search were retired; send old links somewhere useful.
+      { source: "/blog/:path*", destination: "/", permanent: true },
+      { source: "/search", destination: "/", permanent: true },
     ];
   },
 };

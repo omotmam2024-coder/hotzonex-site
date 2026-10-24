@@ -86,29 +86,6 @@ export default function AboutPage() {
           ))}
         </div>
       </section>
-
-      <section className="mt-20">
-        <div className="mb-8 max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">Team</p>
-          <h2 className="mt-2 text-3xl font-black text-foreground">Hotzonex is a growing local team with room for new partnerships and support needs.</h2>
-        </div>
-
-        <div className="grid gap-5 md:grid-cols-3">
-          {[
-            { name: "Hotzonex Support Team", role: "Customer support" },
-            { name: "Network Services Team", role: "Connectivity and technical support" },
-            { name: "Digital Solutions Team", role: "Website and software services" },
-          ].map((person) => (
-            <div key={person.name} className="rounded-2xl border border-border bg-card p-6 shadow-sm">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-lg font-black text-primary">
-                {person.name.charAt(0) || "H"}
-              </div>
-              <h3 className="text-xl font-bold text-foreground">{person.name}</h3>
-              <p className="mt-2 text-sm text-muted-foreground">{person.role}</p>
-            </div>
-          ))}
-        </div>
-      </section>
     </div>
   );
 }

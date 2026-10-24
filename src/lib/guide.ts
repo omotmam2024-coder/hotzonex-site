@@ -5,12 +5,10 @@ import knowledge from "@/generated/policy-knowledge.json";
  * extracted at build time by scripts/build-knowledge.mjs.
  *
  * Pages that show prices, FAQs or policies read them from here, so the site and
- * the assistant always match the guide — replace the PDF and both update.
+ * the site always matches the guide — replace the PDF and the pages update.
  */
 
 export type GuideChunk = (typeof knowledge.chunks)[number];
-
-export const guideName = `Hotzonex Wi-Fi Customer Service Guide${knowledge.version ? ` v${knowledge.version}` : ""}`;
 
 export const guideChunks: GuideChunk[] = knowledge.chunks;
 
