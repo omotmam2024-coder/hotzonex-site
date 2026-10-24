@@ -1,10 +1,10 @@
 /**
- * Builds the assistant's knowledge base from the Hotzonex policy PDF.
+ * Builds the site's knowledge base from the Hotzonex policy PDF.
  *
  * The PDF is the single source of truth: replace doc/Hotzonex_policy.pdf and
  * run `npm run knowledge` (it also runs as part of `npm run build`). The output
  * is a list of self-contained chunks — one per FAQ answer, policy section,
- * price list, callout and info box — that the assistant searches at runtime.
+ * price list, callout and info box — that the pricing, FAQ, terms and privacy pages read.
  *
  * Chunking follows the document's typography rather than fixed page ranges:
  * page titles, bold section headings, "Q" questions, numbered policies, bold
@@ -315,6 +315,19 @@ function buildChunks(lines) {
   return chunks;
 }
 
+/**
+ * The guide cross-references its own numbered sections ("The full lists are in Section 02"), which mean
+ * nothing on the website. Point them at the page that shows the same information instead.
+ */
+const SECTION_PAGES = { "01": "on our Locations page", "02": "on our Pricing page" };
+
+function replaceSectionRefs(text) {
+  return text.replace(/\s+in Section (\d+)(?=[.,;])/g, (match, number) => {
+    const page = SECTION_PAGES[number.padStart(2, "0")];
+    return page ? ` ${page}` : "";
+  });
+}
+
 function finalize(chunks) {
   const seen = new Map();
 
@@ -329,7 +342,7 @@ function finalize(chunks) {
       section: chunk.section,
       heading: chunk.kind === "faq" || chunk.heading !== chunk.title ? chunk.heading : null,
       title: chunk.title,
-      text: chunk.paragraphs.map((paragraph) => paragraph.text).join("\n"),
+      text: replaceSectionRefs(chunk.paragraphs.map((paragraph) => paragraph.text).join("\n")),
       // Shown with the answer but not searched, so it cannot attract unrelated questions.
       context: chunk.context ?? null,
     };
@@ -339,7 +352,7 @@ function finalize(chunks) {
 async function main() {
   const sourcePath = path.join(root, SOURCE);
   if (!fs.existsSync(sourcePath)) {
-    throw new Error(`Knowledge source not found: ${SOURCE}. The assistant answers from this PDF, so it must exist.`);
+    throw new Error(`Knowledge source not found: ${SOURCE}. Prices, FAQs and policies come from this PDF, so it must exist.`);
   }
 
   const loadingTask = getDocument({ data: new Uint8Array(fs.readFileSync(sourcePath)), verbosity: 0 });

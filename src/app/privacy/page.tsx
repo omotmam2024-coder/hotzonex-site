@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 import { siteConfig } from "@/config/site";
-import { guideChunk, guideFaqs, guideName } from "@/lib/guide";
+import { guideChunk, guideFaqs } from "@/lib/guide";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -12,10 +12,9 @@ const networkPrivacy = guideChunk("Your privacy");
 const privacyFaqs = guideFaqs.filter((faq) => /browsing history|online payments/i.test(faq.question));
 
 // Keep this list in step with what the site actually does: no cookies, no analytics,
-// no forms, and the assistant route does not log the questions it receives.
+// no forms.
 const websitePractices = [
   "This website has no accounts or forms and does not use cookies, analytics or advertising trackers.",
-  "Questions you type into the website assistant are sent to our server only to find an answer in our Customer Service Guide. Hotzonex does not store them or link them to you.",
   "WhatsApp, phone, email and map links open those services directly. Their own privacy policies apply to anything you send through them.",
   "The site is hosted on Vercel, which keeps standard technical logs (such as IP address and the pages requested) to operate and secure the service.",
 ];
@@ -59,7 +58,6 @@ export default function PrivacyPage() {
           For privacy questions, call or message {siteConfig.contact.phone}, email {siteConfig.contact.email}, or visit
           your nearest Hotzonex office.
         </p>
-        <p className="text-xs">Network privacy statement source: {guideName}.</p>
       </section>
     </div>
   );

@@ -50,28 +50,7 @@ const reasons = [
   "Trusted local service in Juba, South Sudan",
   "Support for homes, offices, and public hotspot users",
   "Clear pricing and practical service guidance",
-  "Fast contact through WhatsApp, phone, and visit-a-location flows",
-];
-
-const galleryImages = [
-  {
-    title: "Reliable hotspot access",
-    description: "Fast, affordable WiFi for meetings, study, and day-to-day browsing.",
-    image: officeImages.workstations,
-    alt: officeAlt.workstations,
-  },
-  {
-    title: "Business connectivity",
-    description: "Home and office internet support for stable everyday operations.",
-    image: officeImages.desk,
-    alt: officeAlt.desk,
-  },
-  {
-    title: "Professional network support",
-    description: "Practical guidance for Starlink, MikroTik, and hotspot setups.",
-    image: officeImages.equipment,
-    alt: officeAlt.equipment,
-  },
+  "Fast contact by WhatsApp, phone, or a visit to our offices",
 ];
 
 export default function HomePage() {
@@ -143,26 +122,6 @@ export default function HomePage() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 pb-16 sm:px-6 lg:px-8">
-        <div className="grid gap-6 lg:grid-cols-3">
-          {galleryImages.map((item) => (
-            <figure key={item.title} className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
-              <Image
-                src={item.image}
-                alt={item.alt}
-                placeholder="blur"
-                sizes="(max-width: 1024px) 100vw, 33vw"
-                className="h-64 w-full object-cover"
-              />
-              <figcaption className="space-y-2 p-5">
-                <h3 className="text-xl font-bold text-foreground">{item.title}</h3>
-                <p className="text-sm leading-6 text-muted-foreground">{item.description}</p>
-              </figcaption>
-            </figure>
-          ))}
         </div>
       </section>
 

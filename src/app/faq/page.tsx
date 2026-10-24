@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FaqClient } from "@/components/faq-client";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
-import { guideFaqs, guideName } from "@/lib/guide";
+import { guideFaqs } from "@/lib/guide";
 import { officeAlt, officeImages } from "@/lib/office-images";
 
 export const metadata: Metadata = {
@@ -26,7 +26,6 @@ export default function FaqPage() {
           <h1 className="mt-3 text-4xl font-black text-foreground sm:text-5xl">Questions about Hotzonex services and support.</h1>
           <p className="mt-4 max-w-xl text-base leading-7 text-muted-foreground">
             Quick answers about voucher prices, which network to join, opening hours, refunds and our other services.
-            Wi-Fi answers come from the {guideName}.
           </p>
         </div>
 

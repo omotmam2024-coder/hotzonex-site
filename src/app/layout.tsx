@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import { AssistantWidget } from "@/components/assistant-widget";
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { WhatsAppButton } from "@/components/whatsapp-button";
@@ -65,7 +64,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <main className="flex-1">{children}</main>
           <Footer />
           <WhatsAppButton />
-          <AssistantWidget />
         </div>
       </body>
     </html>

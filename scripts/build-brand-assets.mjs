@@ -5,7 +5,7 @@
  * heavy to load on every page. This crops it to the badge, then writes small,
  * compressed copies for each place a logo appears:
  *
- *   public/brand/hotzonex-logo.png      256px  header, footer, assistant, 404 page
+ *   public/brand/hotzonex-logo.png      256px  header, footer, 404 page
  *   public/brand/hotzonex-logo-512.png  512px  social preview card, search engines
  *   src/app/icon.png                    192px  browser tab and Android home screen
  *   src/app/apple-icon.png              180px  iPhone home screen (white background)
