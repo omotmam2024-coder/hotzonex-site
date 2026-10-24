@@ -20,19 +20,15 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
-      // hotzonex.dev is the one canonical address: www and the old Vercel aliases
-      // redirect to it so search engines and shared links never split between copies.
+      // www.hotzonex.dev is the one canonical address. Vercel's domain settings
+      // redirect the apex hotzonex.dev to it; the old Vercel alias redirects here so
+      // search engines and shared links never split between copies. Do not add an
+      // www -> apex rule: with Vercel's apex -> www redirect that loops forever.
       // Per-deployment preview URLs do not match and keep working.
       {
         source: "/:path*",
-        has: [{ type: "host", value: "www\\.hotzonex\\.dev" }],
-        destination: "https://hotzonex.dev/:path*",
-        permanent: true,
-      },
-      {
-        source: "/:path*",
         has: [{ type: "host", value: "hotzonex-site(-omot-mam-s-projects)?\\.vercel\\.app" }],
-        destination: "https://hotzonex.dev/:path*",
+        destination: "https://www.hotzonex.dev/:path*",
         permanent: true,
       },
       // "Jebel Iraq" was listed separately from the Head Office it duplicated.
