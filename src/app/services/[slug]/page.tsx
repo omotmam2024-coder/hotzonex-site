@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
-import { officeAlt, officeImages } from "@/lib/office-images";
+import { photoAlt, photos } from "@/lib/photos";
 
 export async function generateStaticParams() {
   return siteConfig.services.map((service) => ({ slug: service.slug }));
@@ -41,11 +41,11 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
         <span>{service.title}</span>
       </div>
 
-      <article className="overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
+      <article className="overflow-hidden rounded-2xl border border-border bg-card">
         {service.image ? (
           <Image
-            src={officeImages[service.image]}
-            alt={officeAlt[service.image]}
+            src={photos[service.image]}
+            alt={photoAlt[service.image]}
             placeholder="blur"
             sizes="(max-width: 1024px) 100vw, 1024px"
             loading="eager"
@@ -54,16 +54,16 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
         ) : null}
 
         <div className="p-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">{service.highlight}</p>
-          <h1 className="mt-3 text-4xl font-black text-foreground">{service.title}</h1>
+          <p className="text-sm font-semibold text-primary">{service.highlight}</p>
+          <h1 className="mt-3 text-4xl font-extrabold text-foreground">{service.title}</h1>
           <p className="mt-4 max-w-3xl text-lg text-muted-foreground">{service.summary}</p>
 
         <div className="mt-10 grid gap-8 lg:grid-cols-2">
           <div>
-            <h2 className="text-2xl font-black text-foreground">Who it is for</h2>
+            <h2 className="text-2xl font-extrabold text-foreground">Who it is for</h2>
             <p className="mt-3 text-sm leading-6 text-muted-foreground">{service.audience}</p>
 
-            <h2 className="mt-8 text-2xl font-black text-foreground">What is included</h2>
+            <h2 className="mt-8 text-2xl font-extrabold text-foreground">What is included</h2>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
               {service.included.map((item) => (
                 <li key={item}>• {item}</li>
@@ -72,11 +72,11 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
           </div>
 
           <div className="rounded-2xl border border-border bg-background p-6">
-            <h2 className="text-2xl font-black text-foreground">How to get it</h2>
+            <h2 className="text-2xl font-extrabold text-foreground">How to get it</h2>
             <ol className="mt-5 space-y-4 text-sm text-muted-foreground">
               {service.steps.map((step, index) => (
                 <li key={step} className="flex gap-3">
-                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
+                  <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-primary text-xs font-bold text-primary-foreground">
                     {index + 1}
                   </span>
                   <span>{step}</span>

@@ -31,11 +31,10 @@ const values = [
 
 export default function AboutPage() {
   return (
-    <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+    <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
       <section className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">About Hotzonex</p>
-          <h1 className="mt-3 text-4xl font-black text-foreground sm:text-5xl">A local technology company helping people stay connected.</h1>
+          <h1 className="text-4xl font-extrabold text-foreground sm:text-5xl">A local technology company helping people stay connected.</h1>
           <p className="mt-5 max-w-2xl text-lg text-muted-foreground">
             Hotzonex is based in Juba, South Sudan, and provides internet access, technical support, and digital services for households, businesses, and public hotspot users.
           </p>
@@ -50,7 +49,7 @@ export default function AboutPage() {
         </div>
 
         <div className="space-y-5">
-          <div className="overflow-hidden rounded-[2rem] border border-border bg-card shadow-lg shadow-slate-200/60">
+          <div className="overflow-hidden rounded-2xl">
             <Image
               src={officeImages.sign}
               alt={officeAlt.sign}
@@ -61,8 +60,8 @@ export default function AboutPage() {
             />
           </div>
 
-          <div className="rounded-3xl border border-border bg-card p-8 shadow-sm">
-            <h2 className="text-2xl font-black text-foreground">What makes Hotzonex different</h2>
+          <div className="rounded-2xl border border-border bg-card p-8">
+            <h2 className="text-2xl font-extrabold text-foreground">What makes Hotzonex different</h2>
             <ul className="mt-6 space-y-4 text-sm leading-6 text-muted-foreground">
               <li>• We serve both walk-up internet customers and business clients.</li>
               <li>• We combine connectivity support with software and website development expertise.</li>
@@ -74,12 +73,11 @@ export default function AboutPage() {
 
       <section className="mt-20">
         <div className="mb-8 max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">Mission</p>
-          <h2 className="mt-2 text-3xl font-black text-foreground">Our mission is simple: make internet and digital support accessible and useful.</h2>
+          <h2 className="text-3xl font-extrabold text-foreground">Our mission is simple: make internet and digital support accessible and useful.</h2>
         </div>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {values.map((value) => (
-            <article key={value.title} className="rounded-2xl border border-border bg-card p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-lg">
+            <article key={value.title} className="rounded-2xl border border-border bg-card p-6">
               <h3 className="text-xl font-bold text-foreground">{value.title}</h3>
               <p className="mt-3 text-sm leading-6 text-muted-foreground">{value.text}</p>
             </article>

@@ -17,18 +17,17 @@ const pricing = guideChunk("Prices differ between our locations");
 export default function TermsPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
-      <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">Legal</p>
-      <h1 className="mt-3 text-4xl font-black text-foreground">Terms of Use</h1>
+      <h1 className="text-4xl font-extrabold text-foreground">Terms of Use</h1>
       {intro && <p className="mt-5 text-base leading-7 text-muted-foreground">{intro.text}</p>}
 
       <div className="mt-10 space-y-8">
         {policySections.map((section) => (
-          <section key={section.title} className="rounded-3xl border border-border bg-card p-6 shadow-sm">
-            <h2 className="text-xl font-black text-foreground">{section.title}</h2>
+          <section key={section.title} className="rounded-2xl border border-border bg-card p-6">
+            <h2 className="text-xl font-extrabold text-foreground">{section.title}</h2>
             <ol className="mt-4 space-y-3">
               {section.items.map((item) => (
                 <li key={`${item.number}-${item.text}`} className="flex gap-3 text-sm leading-6 text-muted-foreground">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-xs font-bold text-primary">
+                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-xs font-bold text-primary">
                     {item.number}
                   </span>
                   <span>{item.text}</span>
@@ -46,7 +45,7 @@ export default function TermsPage() {
       ))}
 
       <section className="mt-10 space-y-4 text-sm leading-6 text-muted-foreground">
-        <h2 className="text-xl font-black text-foreground">Prices and this website</h2>
+        <h2 className="text-xl font-extrabold text-foreground">Prices and this website</h2>
         {pricing && <p>{pricing.text}</p>}
         <p>
           Prices, networks and opening hours shown on this website are provided for guidance. All prices are in South

@@ -22,11 +22,10 @@ const websitePractices = [
 export default function PrivacyPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
-      <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">Legal</p>
-      <h1 className="mt-3 text-4xl font-black text-foreground">Privacy Policy</h1>
+      <h1 className="text-4xl font-extrabold text-foreground">Privacy Policy</h1>
 
-      <section className="mt-10 rounded-3xl border border-border bg-card p-6 shadow-sm">
-        <h2 className="text-xl font-black text-foreground">On the Hotzonex Wi-Fi network</h2>
+      <section className="mt-10 rounded-2xl border border-border bg-card p-6">
+        <h2 className="text-xl font-extrabold text-foreground">On the Hotzonex Wi-Fi network</h2>
         {networkPrivacy && <p className="mt-4 text-sm leading-6 text-muted-foreground">{networkPrivacy.text}</p>}
         {privacyFaqs.length > 0 && (
           <dl className="mt-6 space-y-4">
@@ -40,12 +39,12 @@ export default function PrivacyPage() {
         )}
       </section>
 
-      <section className="mt-8 rounded-3xl border border-border bg-card p-6 shadow-sm">
-        <h2 className="text-xl font-black text-foreground">On this website</h2>
+      <section className="mt-8 rounded-2xl border border-border bg-card p-6">
+        <h2 className="text-xl font-extrabold text-foreground">On this website</h2>
         <ul className="mt-4 space-y-3 text-sm leading-6 text-muted-foreground">
           {websitePractices.map((practice) => (
             <li key={practice} className="flex gap-3">
-              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+              <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-lg bg-primary" />
               <span>{practice}</span>
             </li>
           ))}
@@ -53,7 +52,7 @@ export default function PrivacyPage() {
       </section>
 
       <section className="mt-10 space-y-3 text-sm leading-6 text-muted-foreground">
-        <h2 className="text-xl font-black text-foreground">Contact</h2>
+        <h2 className="text-xl font-extrabold text-foreground">Contact</h2>
         <p>
           For privacy questions, call or message {siteConfig.contact.phone}, email {siteConfig.contact.email}, or visit
           your nearest Hotzonex office.

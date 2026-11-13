@@ -1,4 +1,4 @@
-import type { OfficeImage } from "@/lib/office-images";
+import type { Photo } from "@/lib/photos";
 
 export const siteConfig = {
   name: "Hotzonex",
@@ -72,7 +72,7 @@ export const siteConfig = {
       ],
       cta: "Request a voucher",
       highlight: "Popular with walk-up users who want simple, prepaid access.",
-      image: "desk" as OfficeImage,
+      image: "cafe" as Photo,
     },
     {
       slug: "home-office-internet",
@@ -92,7 +92,7 @@ export const siteConfig = {
       ],
       cta: "Request a dedicated connection",
       highlight: "Built for people who need a reliable connection every day.",
-      image: "workstations" as OfficeImage,
+      image: "router" as Photo,
     },
     {
       slug: "network-setup-it-support",
@@ -112,7 +112,7 @@ export const siteConfig = {
       ],
       cta: "Request IT support",
       highlight: "Designed for customers who need help with real-world network issues.",
-      image: "servicesWall" as OfficeImage,
+      image: "cabling" as Photo,
     },
     {
       slug: "starlink-installation-activation",
@@ -132,7 +132,7 @@ export const siteConfig = {
       ],
       cta: "Request Starlink setup",
       highlight: "Ideal for customers who need a dependable satellite internet option.",
-      image: "sign" as OfficeImage,
+      image: "dish" as Photo,
     },
     {
       slug: "mikrotik-configuration-hotspot",
@@ -152,7 +152,7 @@ export const siteConfig = {
       ],
       cta: "Request MikroTik support",
       highlight: "Built for customers who want secure, organised, and scalable network management.",
-      image: "equipment" as OfficeImage,
+      image: "accessPoint" as Photo,
     },
     {
       slug: "website-software-development",
@@ -172,7 +172,7 @@ export const siteConfig = {
       ],
       cta: "Request a development quote",
       highlight: "Hotzonex also builds digital products for other businesses.",
-      image: "wide" as OfficeImage,
+      image: "developer" as Photo,
     },
   ],
   // Voucher prices are not listed here: the pricing page reads them from the

@@ -1,23 +1,28 @@
 @import "tailwindcss";
 
+/* Colours come from the Hotzonex badge: its royal blue, the deep water at its
+   base, and the sunrise behind the Wi-Fi mark. */
 :root {
-  --background: #f6f8fb;
-  --foreground: #0f172a;
-  --muted: #edf2f7;
-  --muted-foreground: #475569;
+  --background: #ffffff;
+  --foreground: #0a2558;
+  --muted: #e8f1fc;
+  --muted-foreground: #4a5b7a;
   --card: #ffffff;
-  --card-foreground: #0f172a;
-  --primary: #0f766e;
-  --primary-foreground: #f0fdfa;
-  --secondary: #dbeafe;
-  --secondary-foreground: #0f172a;
-  --accent: #f59e0b;
-  --accent-foreground: #111827;
-  --border: #cbd5e1;
+  --card-foreground: #0a2558;
+  --primary: #1450b4;
+  --primary-foreground: #ffffff;
+  --secondary: #e8f1fc;
+  --secondary-foreground: #0a2558;
+  --accent: #f5a01e;
+  --accent-foreground: #0a2558;
+  --deep: #0a2558;
+  --deep-foreground: #ffffff;
+  --deep-muted: #b9cdee;
+  --border: #cddcf0;
   --success: #15803d;
   --warning: #b45309;
   --error: #b91c1c;
-  --ring: #0f766e;
+  --ring: #1450b4;
 }
 
 @theme inline {
@@ -33,12 +38,16 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-deep: var(--deep);
+  --color-deep-foreground: var(--deep-foreground);
+  --color-deep-muted: var(--deep-muted);
   --color-border: var(--border);
   --color-success: var(--success);
   --color-warning: var(--warning);
   --color-error: var(--error);
   --color-ring: var(--ring);
   --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
 }
 
 html {
@@ -78,6 +87,8 @@ body {
   h5,
   h6 {
     @apply font-semibold tracking-tight text-foreground;
+    font-family: var(--font-display), var(--font-sans), Arial, sans-serif;
+    text-wrap: balance;
   }
 
   p {
@@ -86,5 +97,30 @@ body {
 
   a {
     @apply transition-colors;
+  }
+
+  /* One visible focus style for every link and control that does not set its own. */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Headline-style text that is not a heading element (prices, figures). */
+  .font-display {
+    font-family: var(--font-display), var(--font-sans), Arial, sans-serif;
+  }
+
+  /* The voucher: a ticket with a half-circle bitten out of each side where the
+     stub tears off. --notch-y is the distance from the top to the tear line. */
+  .ticket {
+    --notch: 12px;
+    -webkit-mask:
+      radial-gradient(circle var(--notch) at 0 var(--notch-y), #0000 98%, #000) left / 51% 100% no-repeat,
+      radial-gradient(circle var(--notch) at 100% var(--notch-y), #0000 98%, #000) right / 51% 100% no-repeat;
+    mask:
+      radial-gradient(circle var(--notch) at 0 var(--notch-y), #0000 98%, #000) left / 51% 100% no-repeat,
+      radial-gradient(circle var(--notch) at 100% var(--notch-y), #0000 98%, #000) right / 51% 100% no-repeat;
   }
 }

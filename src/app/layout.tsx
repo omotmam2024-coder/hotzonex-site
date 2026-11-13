@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Bricolage_Grotesque, Instrument_Sans } from "next/font/google";
 
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
@@ -7,8 +7,14 @@ import { WhatsAppButton } from "@/components/whatsapp-button";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
 
-const inter = Inter({
+const bodyFont = Instrument_Sans({
   variable: "--font-sans",
+  subsets: ["latin"],
+});
+
+// Headings and prices.
+const displayFont = Bricolage_Grotesque({
+  variable: "--font-display",
   subsets: ["latin"],
 });
 
@@ -52,7 +58,7 @@ const organizationJsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
+    <html lang="en" className={`${bodyFont.variable} ${displayFont.variable} h-full antialiased`}>
       <body className="min-h-full bg-background text-foreground">
         <script
           type="application/ld+json"

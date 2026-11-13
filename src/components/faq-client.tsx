@@ -29,7 +29,7 @@ export function FaqClient({ faqs }: { faqs: Faq[] }) {
 
   return (
     <div className="space-y-8">
-      <div className="rounded-2xl border border-border bg-card p-4 shadow-sm">
+      <div className="rounded-2xl border border-border bg-card p-4">
         <label htmlFor="faq-search" className="mb-2 block text-sm font-medium text-foreground">
           Search FAQs
         </label>
@@ -52,7 +52,7 @@ export function FaqClient({ faqs }: { faqs: Faq[] }) {
             type="button"
             aria-pressed={category === activeCategory}
             onClick={() => setActiveCategory(category)}
-            className={category === activeCategory ? "rounded-full bg-primary px-3 py-2 text-sm font-medium text-primary-foreground" : "rounded-full border border-border bg-card px-3 py-2 text-sm font-medium text-foreground"}
+            className={category === activeCategory ? "rounded-lg bg-primary px-3 py-2 text-sm font-medium text-primary-foreground" : "rounded-lg border border-border bg-card px-3 py-2 text-sm font-medium text-foreground"}
           >
             {category}
           </button>
@@ -73,7 +73,7 @@ export function FaqClient({ faqs }: { faqs: Faq[] }) {
                   onClick={() => setOpenQuestion(isOpen ? null : item.question)}
                 >
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.15em] text-muted-foreground">{item.category}</p>
+                    <p className="text-xs font-semibold text-muted-foreground">{item.category}</p>
                     <h3 className="mt-1 text-base font-semibold text-foreground">{item.question}</h3>
                   </div>
                   <ChevronDown className={isOpen ? "h-5 w-5 shrink-0 rotate-180 transition-transform" : "h-5 w-5 shrink-0 transition-transform"} />

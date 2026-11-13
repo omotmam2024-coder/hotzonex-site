@@ -3,56 +3,67 @@ import Link from "next/link";
 
 import { siteConfig } from "@/config/site";
 
+const linkGroups = [
+  {
+    title: "Wi-Fi",
+    links: [
+      { href: "/pricing", label: "Voucher prices" },
+      { href: "/locations", label: "Offices and hours" },
+      { href: "/faq", label: "FAQ" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { href: "/services", label: "Services" },
+      { href: "/about", label: "About" },
+      { href: "/contact", label: "Contact" },
+      { href: "/privacy", label: "Privacy" },
+      { href: "/terms", label: "Terms" },
+    ],
+  },
+];
+
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-muted/20">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-4 lg:px-8">
-        <div className="space-y-4">
-          <Link href="/" className="flex items-center gap-3 text-lg font-bold text-foreground">
+    <footer className="bg-deep text-deep-foreground">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr_1.2fr] lg:px-8">
+        <div>
+          <Link href="/" className="flex items-center gap-3">
             <Image src="/brand/hotzonex-logo.png" alt="" width={56} height={56} unoptimized className="h-14 w-14" />
-            {siteConfig.name}
+            <span className="font-display text-2xl font-bold tracking-tight">{siteConfig.name}</span>
           </Link>
-          <p className="max-w-xs text-sm text-muted-foreground">
-            {siteConfig.description}
+          <p className="mt-4 max-w-xs text-sm leading-6 text-deep-muted">
+            Prepaid Wi-Fi, home and office internet, and IT services in Juba, South Sudan.
           </p>
         </div>
 
-        <div>
-          <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-            Company
-          </h3>
-          <ul className="space-y-3 text-sm text-foreground">
-            <li><Link href="/about">About</Link></li>
-            <li><Link href="/services">Services</Link></li>
-            <li><Link href="/pricing">Pricing</Link></li>
-            <li><Link href="/contact">Contact</Link></li>
-          </ul>
-        </div>
+        {linkGroups.map((group) => (
+          <nav key={group.title} aria-label={group.title}>
+            {/* Explicit colour: the global heading style would otherwise paint it dark on this dark footer. */}
+            <h2 className="text-base font-semibold text-deep-foreground">{group.title}</h2>
+            <ul className="mt-4 space-y-3 text-sm">
+              {group.links.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-deep-muted hover:text-deep-foreground">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))}
 
         <div>
-          <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-            Support
-          </h3>
-          <ul className="space-y-3 text-sm text-foreground">
-            <li><Link href="/faq">FAQ</Link></li>
-            <li><Link href="/locations">Locations</Link></li>
-            <li><Link href="/privacy">Privacy</Link></li>
-            <li><Link href="/terms">Terms</Link></li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.12em] text-muted-foreground">
-            Contact
-          </h3>
-          <ul className="space-y-3 text-sm text-foreground">
+          <h2 className="text-base font-semibold text-deep-foreground">Contact</h2>
+          <ul className="mt-4 space-y-3 text-sm text-deep-muted">
             <li>
-              <a href={`tel:+${siteConfig.contact.phone.replace(/\D/g, "")}`} className="hover:text-primary">
+              <a href={`tel:+${siteConfig.contact.phone.replace(/\D/g, "")}`} className="hover:text-deep-foreground">
                 {siteConfig.contact.phone}
               </a>
             </li>
             <li>
-              <a href={`mailto:${siteConfig.contact.email}`} className="break-all hover:text-primary">
+              <a href={`mailto:${siteConfig.contact.email}`} className="break-all hover:text-deep-foreground">
                 {siteConfig.contact.email}
               </a>
             </li>
