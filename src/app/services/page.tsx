@@ -66,7 +66,7 @@ export default function ServicesPage() {
                 </ul>
               </div>
 
-              <Link href={`/services/${service.slug}`} className="mt-8 inline-flex items-center rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground">
+              <Link href={`/services/${service.slug}`} prefetch={false} className="mt-8 inline-flex items-center rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground">
                 View service details
               </Link>
             </div>

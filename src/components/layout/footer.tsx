@@ -29,8 +29,8 @@ export function Footer() {
     <footer className="bg-deep text-deep-foreground">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr_1.2fr] lg:px-8">
         <div>
-          <Link href="/" className="flex items-center gap-3">
-            <Image src="/brand/hotzonex-logo.png" alt="" width={56} height={56} unoptimized className="h-14 w-14" />
+          <Link href="/" prefetch={false} className="flex items-center gap-3">
+            <Image src="/brand/hotzonex-logo.png" alt="" width={56} height={56} className="h-14 w-14" />
             <span className="font-display text-2xl font-bold tracking-tight">{siteConfig.name}</span>
           </Link>
           <p className="mt-4 max-w-xs text-sm leading-6 text-deep-muted">
@@ -45,7 +45,7 @@ export function Footer() {
             <ul className="mt-4 space-y-3 text-sm">
               {group.links.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-deep-muted hover:text-deep-foreground">
+                  <Link href={link.href} prefetch={false} className="text-deep-muted hover:text-deep-foreground">
                     {link.label}
                   </Link>
                 </li>

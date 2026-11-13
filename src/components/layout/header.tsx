@@ -31,7 +31,7 @@ export function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-4 py-3 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3 text-foreground">
           {/* The name beside it labels the link, so the badge itself stays decorative (alt=""). */}
-          <Image src="/brand/hotzonex-logo.png" alt="" width={44} height={44} unoptimized preload className="h-11 w-11" />
+          <Image src="/brand/hotzonex-logo.png" alt="" width={44} height={44} preload className="h-11 w-11" />
           <span className="font-display text-xl font-bold tracking-tight">{siteConfig.name}</span>
         </Link>
 

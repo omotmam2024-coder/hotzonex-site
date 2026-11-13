@@ -92,7 +92,7 @@ export function VoucherTicket({ offices }: { offices: VoucherOffice[] }) {
             <a href={office.mapUrl} target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline">
               Get directions
             </a>
-            <Link href={`/locations/${office.slug}`} className="underline underline-offset-4 hover:no-underline">
+            <Link href={`/locations/${office.slug}`} prefetch={false} className="underline underline-offset-4 hover:no-underline">
               Office details
             </Link>
           </div>
