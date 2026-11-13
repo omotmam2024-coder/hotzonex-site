@@ -61,7 +61,7 @@ export default function LocationsPage() {
             </div>
 
             <div className="mt-auto flex flex-col gap-3 pt-6 sm:flex-row lg:flex-col xl:flex-row">
-              <Link href={`/locations/${location.slug}`} className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground">
+              <Link href={`/locations/${location.slug}`} prefetch={false} className="inline-flex items-center justify-center rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground">
                 View details
               </Link>
               <a

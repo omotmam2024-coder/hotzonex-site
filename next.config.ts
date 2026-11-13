@@ -15,6 +15,12 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // Most visitors are on slow mobile connections, so pictures are served as AVIF
+  // where the browser supports it, and large background photos may ask for quality 50.
+  images: {
+    formats: ["image/avif", "image/webp"],
+    qualities: [50, 75],
+  },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },

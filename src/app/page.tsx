@@ -57,6 +57,7 @@ export default function HomePage() {
           placeholder="blur"
           fill
           sizes="100vw"
+          quality={50}
           preload
           className="-z-20 object-cover"
         />
@@ -117,7 +118,7 @@ export default function HomePage() {
                 <a href={location.mapUrl} target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline">
                   Get directions
                 </a>
-                <Link href={`/locations/${location.slug}`} className="underline underline-offset-4 hover:no-underline">
+                <Link href={`/locations/${location.slug}`} prefetch={false} className="underline underline-offset-4 hover:no-underline">
                   Office details
                 </Link>
               </div>
@@ -141,7 +142,7 @@ export default function HomePage() {
           <ul className="divide-y divide-border border-y border-border lg:self-start">
             {siteConfig.services.map((service) => (
               <li key={service.slug}>
-                <Link href={`/services/${service.slug}`} className="group block py-5">
+                <Link href={`/services/${service.slug}`} prefetch={false} className="group block py-5">
                   <h3 className="text-lg font-bold group-hover:text-primary">{service.title}</h3>
                   <p className="mt-1 max-w-xl text-sm leading-6">{firstSentence(service.summary)}</p>
                 </Link>
@@ -170,7 +171,7 @@ export default function HomePage() {
 
             <p className="mt-10 text-base text-deep-muted">
               Code not working?{" "}
-              <Link href="/faq" className="font-semibold text-deep-foreground underline underline-offset-4 hover:no-underline">
+              <Link href="/faq" prefetch={false} className="font-semibold text-deep-foreground underline underline-offset-4 hover:no-underline">
                 Check the FAQ
               </Link>{" "}
               or ask at the counter.
@@ -201,7 +202,7 @@ export default function HomePage() {
               <a href={phoneHref}>Call {siteConfig.contact.phone}</a>
             </Button>
             <Button variant="ghost" size="lg" asChild>
-              <Link href="/contact">All contact details</Link>
+              <Link href="/contact" prefetch={false}>All contact details</Link>
             </Button>
           </div>
         </div>
