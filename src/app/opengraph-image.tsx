@@ -32,7 +32,7 @@ export default async function OpengraphImage() {
           flexDirection: "column",
           justifyContent: "space-between",
           padding: "72px 80px",
-          background: "linear-gradient(135deg, #0b2f4f 0%, #0f766e 100%)",
+          background: "linear-gradient(135deg, #0a2558 0%, #1450b4 100%)",
           color: "#ffffff",
         }}
       >
@@ -40,14 +40,14 @@ export default async function OpengraphImage() {
         <img src={logoSrc} alt="" width={330} height={330} style={{ position: "absolute", right: 64, top: 150 }} />
         <div style={{ display: "flex", alignItems: "center", fontSize: 44, fontWeight: 800, letterSpacing: -1 }}>
           <span>HOTZONEX</span>
-          <span style={{ marginLeft: 14, color: "#f59e0b" }}>Wi-Fi</span>
+          <span style={{ marginLeft: 14, color: "#f5a01e" }}>Wi-Fi</span>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ fontSize: 62, fontWeight: 800, lineHeight: 1.08, letterSpacing: -2, maxWidth: 700 }}>
             Internet access and support for everyday life in Juba.
           </div>
-          <div style={{ marginTop: 22, fontSize: 27, color: "#ccfbf1", maxWidth: 700 }}>
+          <div style={{ marginTop: 22, fontSize: 27, color: "#b9cdee", maxWidth: 700 }}>
             Wi-Fi vouchers · Home & office internet · Starlink · MikroTik · IT support
           </div>
         </div>

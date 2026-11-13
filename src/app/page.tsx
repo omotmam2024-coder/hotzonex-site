@@ -1,213 +1,209 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, MapPin, ShieldCheck, Wifi, Wrench } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { VoucherTicket, type VoucherOffice } from "@/components/voucher-ticket";
 import { siteConfig } from "@/config/site";
-import { lowestVoucherPrice } from "@/lib/guide";
-import { officeAlt, officeImages } from "@/lib/office-images";
+import { lowestVoucherPrice, priceTables } from "@/lib/guide";
+import { photoAlt, photos } from "@/lib/photos";
 
-const services = [
-  {
-    title: "WiFi hotspot & vouchers",
-    description:
-      "Prepaid internet access for walk-up customers at public hotspot locations, with easy voucher purchases and fast connection support.",
-    icon: Wifi,
-  },
-  {
-    title: "Home & office internet",
-    description:
-      "Dedicated connections for homes, shops, and businesses that need a stable, reliable service for day-to-day operations.",
-    icon: ShieldCheck,
-  },
-  {
-    title: "Network setup & IT support",
-    description:
-      "Router configuration, cabling, troubleshooting, and ongoing technical assistance for customers who need practical support.",
-    icon: Wrench,
-  },
-  {
-    title: "Professional Starlink installation & activation",
-    description:
-      "Professional Starlink setup and activation for homes, offices, and remote locations that need dependable satellite internet.",
-    icon: CheckCircle2,
-  },
-  {
-    title: "MikroTik configuration & hotspot",
-    description:
-      "Router and hotspot configuration for secure, well-managed public or private network access.",
-    icon: Wrench,
-  },
-  {
-    title: "Website & software development",
-    description:
-      "Custom websites, business applications, and digital tools built to support growth for local and regional organisations.",
-    icon: CheckCircle2,
-  },
-];
+/** One voucher per office: the guide's price list joined to that office's hours and map pin. */
+const voucherOffices: VoucherOffice[] = siteConfig.locations.flatMap((location) => {
+  const table = priceTables.find((candidate) => candidate.office === location.name);
+  if (!table) return [];
 
-const reasons = [
-  "Trusted local service in Juba, South Sudan",
-  "Support for homes, offices, and public hotspot users",
-  "Clear pricing and practical service guidance",
-  "Fast contact by WhatsApp, phone, or a visit to our offices",
-];
+  // The descriptive column ("Good for", "Where it sits in the range"), not the per-hour cost.
+  const noteColumn = table.columns.findIndex(
+    (column, index) => index > 0 && index !== table.priceColumn && !/^cost per /i.test(column),
+  );
+
+  return [
+    {
+      slug: location.slug,
+      tab: location.name.replace(/^Jebel-Iraq /, "").replace(/ Home Office$/, ""),
+      name: location.name,
+      hours: location.hours,
+      mapUrl: location.mapUrl,
+      packages: table.rows.map((row) => {
+        const note = noteColumn > 0 ? row[noteColumn] : undefined;
+        return {
+          name: row[0],
+          price: row[table.priceColumn],
+          note: note?.replace(/^best value\s*[—-]\s*/i, ""),
+          bestValue: /best value/i.test(note ?? ""),
+        };
+      }),
+    },
+  ];
+});
+
+const voucherService = siteConfig.services.find((service) => service.slug === "wifi-hotspot-vouchers");
+
+const phoneHref = `tel:+${siteConfig.contact.phone.replace(/\D/g, "")}`;
+const whatsappHref = `https://wa.me/${siteConfig.contact.whatsapp.replace(/\D/g, "")}`;
+
+function firstSentence(text: string) {
+  const end = text.indexOf(". ");
+  return end === -1 ? text : text.slice(0, end + 1);
+}
 
 export default function HomePage() {
   return (
     <>
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(15,118,110,0.14),_transparent_58%)]" />
-        <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
-          <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr]">
-            <div className="space-y-7">
-              <div className="inline-flex items-center rounded-full border border-border bg-white/80 px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-muted-foreground">
-                Juba, South Sudan
-              </div>
-              <div className="space-y-4">
-                <h1 className="max-w-xl text-4xl font-black tracking-tight text-foreground sm:text-5xl md:text-6xl">
-                  Internet access and digital support built for everyday life in Juba.
-                </h1>
-                <p className="max-w-xl text-lg text-muted-foreground">
-                  Hotzonex helps customers stay connected through WiFi vouchers, dedicated home and office internet, IT support, and custom website/software services.
-                </p>
-              </div>
+      <section className="relative isolate overflow-hidden bg-deep">
+        <Image
+          src={photos.people}
+          alt={photoAlt.people}
+          placeholder="blur"
+          fill
+          sizes="100vw"
+          preload
+          className="-z-20 object-cover"
+        />
+        {/* Darkens the photo so the headline and copy stay readable over it. */}
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-deep/90 via-deep/70 to-deep/40" />
 
-              <div className="flex flex-col gap-3 sm:flex-row">
-                <Button asChild size="lg">
-                  <Link href="/pricing">Get Started</Link>
-                </Button>
-                <Button variant="outline" size="lg" asChild>
-                  <Link href="/locations">Find a Location</Link>
-                </Button>
-              </div>
+        <div className="relative mx-auto grid max-w-6xl gap-12 px-4 py-14 sm:px-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:gap-16 lg:px-8 lg:py-20">
+          <div className="lg:pt-10">
+            <h1 className="max-w-xl text-5xl font-extrabold leading-[1.02] text-deep-foreground sm:text-6xl lg:text-7xl">
+              Prepaid Wi-Fi in Juba{lowestVoucherPrice ? `, from ${lowestVoucherPrice}.` : "."}
+            </h1>
+            <p className="mt-6 max-w-lg text-lg leading-8 text-deep-foreground">
+              Buy a voucher at a Hotzonex office, join the office network and enter your code. We also connect homes
+              and offices, install Starlink, set up MikroTik hotspots and build websites.
+            </p>
 
-              <div className="flex flex-wrap items-center gap-6 pt-3 text-sm text-muted-foreground">
-                {siteConfig.locations.map((location) => (
-                  <span key={location.slug} className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4 text-primary" /> {location.name}
-                  </span>
-                ))}
-              </div>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button variant="secondary" asChild size="lg">
+                <Link href="/pricing">See all prices</Link>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <Link href="/locations">Find an office</Link>
+              </Button>
             </div>
+          </div>
 
-            <div className="relative">
-              <div className="overflow-hidden rounded-[2rem] border border-border bg-card shadow-xl shadow-slate-200/60">
-                <Image
-                  src={officeImages.reception}
-                  alt={officeAlt.reception}
-                  placeholder="blur"
-                  sizes="(max-width: 1024px) 100vw, 40vw"
-                  preload
-                  className="h-[500px] w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/20 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-                  <div className="rounded-2xl border border-white/20 bg-white/10 p-4 backdrop-blur-sm">
-                    <div className="flex items-center justify-between gap-3">
-                      <div>
-                        <p className="text-xs uppercase tracking-[0.18em] text-slate-200">Hotspot packages</p>
-                        <p className="mt-2 text-2xl font-black text-white">From {lowestVoucherPrice}</p>
-                      </div>
-                      <span className="rounded-full bg-emerald-400/20 px-2 py-1 text-xs font-semibold text-emerald-200">
-                        Recommended
-                      </span>
-                    </div>
-                    <div className="mt-4 flex items-center justify-between text-sm text-slate-200">
-                      <span>{siteConfig.locations.length} offices in Juba</span>
-                      <span>24/7 Gorom Wi-Fi</span>
-                    </div>
-                  </div>
+          <VoucherTicket offices={voucherOffices} />
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20" aria-labelledby="offices-heading">
+        <h2 id="offices-heading" className="text-3xl font-bold sm:text-4xl">
+          {siteConfig.locations.length} offices in Juba
+        </h2>
+
+        <div className="mt-10 grid gap-10 md:grid-cols-3 md:gap-0 md:divide-x md:divide-border">
+          {siteConfig.locations.map((location) => (
+            <article key={location.slug} className="flex flex-col md:px-8 md:first:pl-0 md:last:pr-0">
+              <h3 className="text-xl font-bold">{location.name}</h3>
+              <p className="mt-1 text-sm">{location.area}</p>
+
+              <dl className="mt-5 space-y-4 text-sm">
+                <div>
+                  <dt className="font-semibold text-foreground">Hours</dt>
+                  <dd className="mt-0.5 text-muted-foreground">{location.hours}</dd>
                 </div>
+                <div>
+                  <dt className="font-semibold text-foreground">Networks</dt>
+                  <dd className="mt-0.5 text-muted-foreground">{location.networks.join(", ")}</dd>
+                </div>
+                <div>
+                  <dt className="font-semibold text-foreground">Vouchers from</dt>
+                  <dd className="font-display mt-0.5 text-xl font-extrabold text-foreground">{location.vouchersFrom}</dd>
+                </div>
+              </dl>
+
+              <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold text-primary md:mt-auto md:pt-6">
+                <a href={location.mapUrl} target="_blank" rel="noreferrer" className="underline underline-offset-4 hover:no-underline">
+                  Get directions
+                </a>
+                <Link href={`/locations/${location.slug}`} className="underline underline-offset-4 hover:no-underline">
+                  Office details
+                </Link>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y border-border bg-card">
-        <div className="mx-auto grid max-w-7xl gap-6 px-4 py-6 sm:grid-cols-2 sm:px-6 lg:grid-cols-4 lg:px-8">
-          <div>
-            <p className="text-3xl font-black text-foreground">{siteConfig.locations.length}</p>
-            <p className="text-sm text-muted-foreground">Wi-Fi offices in Juba</p>
-          </div>
-          <div>
-            <p className="text-3xl font-black text-foreground">Daily</p>
-            <p className="text-sm text-muted-foreground">Support hours</p>
-          </div>
-          <div>
-            <p className="text-3xl font-black text-foreground">{lowestVoucherPrice}</p>
-            <p className="text-sm text-muted-foreground">Wi-Fi vouchers from</p>
-          </div>
-          <div>
-            <p className="text-3xl font-black text-foreground">24/7</p>
-            <p className="text-sm text-muted-foreground">Gorom Wi-Fi signal</p>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mb-10 flex items-end justify-between gap-4">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">Our services</p>
-            <h2 className="mt-2 text-3xl font-black text-foreground">Practical solutions for connectivity and growth.</h2>
-          </div>
-          <Link href="/services" className="hidden items-center gap-2 text-sm font-semibold text-primary md:inline-flex">
-            View all services <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-          {services.map(({ title, description, icon: Icon }) => (
-            <article key={title} className="rounded-2xl border border-border bg-card p-6 shadow-sm">
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                <Icon className="h-5 w-5" />
-              </div>
-              <h3 className="mb-2 text-xl font-bold text-foreground">{title}</h3>
-              <p className="text-sm leading-6 text-muted-foreground">{description}</p>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="bg-slate-950 py-16 text-slate-50">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mb-10 max-w-2xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-300">Why choose us</p>
-            {/* Explicit colour: the global heading style would otherwise paint it dark on this dark section. */}
-            <h2 className="mt-2 text-3xl font-black text-white">Reliable support from a company that understands local internet realities.</h2>
+      <section className="border-t border-border" aria-labelledby="services-heading">
+        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16 lg:px-8 lg:py-20">
+          <div>
+            <h2 id="services-heading" className="text-3xl font-bold sm:text-4xl">
+              What Hotzonex does
+            </h2>
+            <p className="mt-4 max-w-md text-base leading-7">
+              Vouchers are sold at fixed prices. Everything else is quoted for your site: tell us what you need and
+              where, and the Head Office replies with a price.
+            </p>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {reasons.map((reason) => (
-              <div key={reason} className="rounded-2xl border border-slate-800 bg-slate-900 p-5">
-                <CheckCircle2 className="mb-4 h-5 w-5 text-emerald-400" />
-                <p className="text-base font-medium text-slate-100">{reason}</p>
-              </div>
+          <ul className="divide-y divide-border border-y border-border lg:self-start">
+            {siteConfig.services.map((service) => (
+              <li key={service.slug}>
+                <Link href={`/services/${service.slug}`} className="group block py-5">
+                  <h3 className="text-lg font-bold group-hover:text-primary">{service.title}</h3>
+                  <p className="mt-1 max-w-xl text-sm leading-6">{firstSentence(service.summary)}</p>
+                </Link>
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="mb-10 max-w-2xl">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-muted-foreground">How it works</p>
-          <h2 className="mt-2 text-3xl font-black text-foreground">Simple steps from enquiry to service.</h2>
-        </div>
+      {voucherService && (
+        <section className="bg-deep text-deep-foreground" aria-labelledby="steps-heading">
+          <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+            {/* Explicit colour: the global heading style would otherwise paint it dark on this dark section. */}
+            <h2 id="steps-heading" className="text-3xl font-bold text-deep-foreground sm:text-4xl">
+              Get online in {voucherService.steps.length} steps
+            </h2>
 
-        <div className="grid gap-6 md:grid-cols-4">
-          {[
-            { step: "01", title: "Choose a service", text: "Identify whether you need a hotspot voucher, dedicated internet, support, or a website/app." },
-            { step: "02", title: "Contact Hotzonex", text: "Reach out by phone, WhatsApp, or email and confirm your service requirements." },
-            { step: "03", title: "Receive support", text: "Our team handles setup, installation, troubleshooting, or custom development as needed." },
-            { step: "04", title: "Stay connected", text: "Enjoy the service with practical follow-up and ongoing support if required." },
-          ].map((item) => (
-            <div key={item.step} className="rounded-2xl border border-border bg-card p-6">
-              <div className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-primary">{item.step}</div>
-              <h3 className="mb-2 text-xl font-bold text-foreground">{item.title}</h3>
-              <p className="text-sm leading-6 text-muted-foreground">{item.text}</p>
-            </div>
-          ))}
+            <ol className="mt-10 grid gap-8 md:grid-cols-3">
+              {voucherService.steps.map((step, index) => (
+                <li key={step} className="border-t-2 border-accent pt-5">
+                  <span className="font-display text-5xl font-extrabold text-accent">{index + 1}</span>
+                  <p className="mt-3 text-lg leading-7 text-deep-foreground">{step}</p>
+                </li>
+              ))}
+            </ol>
+
+            <p className="mt-10 text-base text-deep-muted">
+              Code not working?{" "}
+              <Link href="/faq" className="font-semibold text-deep-foreground underline underline-offset-4 hover:no-underline">
+                Check the FAQ
+              </Link>{" "}
+              or ask at the counter.
+            </p>
+          </div>
+        </section>
+      )}
+
+      <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20" aria-labelledby="contact-heading">
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end lg:gap-16">
+          <div>
+            <h2 id="contact-heading" className="text-3xl font-bold sm:text-4xl">
+              Talk to us
+            </h2>
+            <p className="mt-4 max-w-md text-base leading-7">
+              For a home or office connection, Starlink, MikroTik or a website, message us with your location and
+              what you need. We answer {siteConfig.contact.hours.toLowerCase()}.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            <Button variant="secondary" size="lg" asChild>
+              <a href={whatsappHref} target="_blank" rel="noreferrer">
+                Message on WhatsApp
+              </a>
+            </Button>
+            <Button variant="outline" size="lg" asChild>
+              <a href={phoneHref}>Call {siteConfig.contact.phone}</a>
+            </Button>
+            <Button variant="ghost" size="lg" asChild>
+              <Link href="/contact">All contact details</Link>
+            </Button>
+          </div>
         </div>
       </section>
     </>
