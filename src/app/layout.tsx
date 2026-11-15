@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque } from "next/font/google";
+import { Archivo } from "next/font/google";
 
 import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
@@ -8,10 +8,11 @@ import { siteConfig } from "@/config/site";
 import "./globals.css";
 
 // Headings and prices. Body text uses the device's own font (see globals.css), so only
-// this one font file is downloaded.
-const displayFont = Bricolage_Grotesque({
+// this one font file is downloaded. The width axis gives the wide poster headlines.
+const displayFont = Archivo({
   variable: "--font-display",
   subsets: ["latin"],
+  axes: ["wdth"],
 });
 
 export const metadata: Metadata = {

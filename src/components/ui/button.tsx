@@ -5,13 +5,15 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-semibold transition-colors disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-bold transition-[color,background-color,border-color,filter] disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       variant: {
         primary: "bg-primary text-primary-foreground hover:bg-deep",
-        secondary: "bg-accent text-accent-foreground hover:bg-accent/85",
+        secondary: "bg-accent text-accent-foreground hover:brightness-95",
         outline: "border border-foreground/25 bg-card text-foreground hover:border-foreground/60",
+        /** A hollow button for the blue sections. */
+        inverse: "border border-primary-foreground/60 text-primary-foreground hover:bg-primary-foreground/10",
         ghost: "text-foreground hover:bg-muted",
       },
       size: {

@@ -1,28 +1,31 @@
 @import "tailwindcss";
 
-/* Colours come from the Hotzonex badge: its royal blue, the deep water at its
-   base, and the sunrise behind the Wi-Fi mark. */
+/* Electric royal blue with a lime highlight, after an ISP landing-page mockup.
+   Blue carries the big sections, lime marks the thing to press, and a dark indigo
+   is used for text on lime and for the footer. */
 :root {
   --background: #ffffff;
-  --foreground: #0a2558;
-  --muted: #e8f1fc;
-  --muted-foreground: #4a5b7a;
+  --foreground: #10153f;
+  --muted: #eef0f7;
+  --muted-foreground: #4b5170;
   --card: #ffffff;
-  --card-foreground: #0a2558;
-  --primary: #1450b4;
+  --card-foreground: #10153f;
+  --primary: #3a4fd7;
   --primary-foreground: #ffffff;
-  --secondary: #e8f1fc;
-  --secondary-foreground: #0a2558;
-  --accent: #f5a01e;
-  --accent-foreground: #0a2558;
-  --deep: #0a2558;
+  /* Secondary text on the blue sections. */
+  --primary-muted: #dfe3ff;
+  --secondary: #eef0f7;
+  --secondary-foreground: #10153f;
+  --accent: #d6f24b;
+  --accent-foreground: #10153f;
+  --deep: #161c5c;
   --deep-foreground: #ffffff;
-  --deep-muted: #b9cdee;
-  --border: #cddcf0;
+  --deep-muted: #c3c9f5;
+  --border: #dde1ef;
   --success: #15803d;
   --warning: #b45309;
   --error: #b91c1c;
-  --ring: #1450b4;
+  --ring: #3a4fd7;
   /* The device's own UI font: nothing to download on a slow connection. */
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
@@ -36,6 +39,7 @@
   --color-card-foreground: var(--card-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-muted: var(--primary-muted);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-accent: var(--accent);
@@ -88,8 +92,9 @@ body {
   h4,
   h5,
   h6 {
-    @apply font-semibold tracking-tight text-foreground;
+    @apply font-bold tracking-[-0.01em] text-foreground;
     font-family: var(--font-display), var(--font-sans), Arial, sans-serif;
+    font-stretch: 112%;
     text-wrap: balance;
   }
 
@@ -112,6 +117,28 @@ body {
   /* Headline-style text that is not a heading element (prices, figures). */
   .font-display {
     font-family: var(--font-display), var(--font-sans), Arial, sans-serif;
+    font-stretch: 112%;
+  }
+
+  /* The mockup's poster type: extra wide, black weight, all capitals. */
+  .font-poster {
+    font-family: var(--font-display), var(--font-sans), Arial, sans-serif;
+    font-stretch: 125%;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 0.92;
+  }
+
+  /* Small label above a section heading ("What we do"). */
+  .eyebrow {
+    @apply text-sm font-semibold text-primary;
+  }
+
+  /* Hollow numerals for the big figure in the stats band. */
+  .text-hollow {
+    color: transparent;
+    -webkit-text-stroke: 2px var(--accent);
   }
 
   /* The voucher: a ticket with a half-circle bitten out of each side where the

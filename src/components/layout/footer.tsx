@@ -31,7 +31,7 @@ export function Footer() {
         <div>
           <Link href="/" prefetch={false} className="flex items-center gap-3">
             <Image src="/brand/hotzonex-logo.png" alt="" width={56} height={56} className="h-14 w-14" />
-            <span className="font-display text-2xl font-bold tracking-tight">{siteConfig.name}</span>
+            <span className="font-display text-2xl font-black uppercase tracking-tight">{siteConfig.name}</span>
           </Link>
           <p className="mt-4 max-w-xs text-sm leading-6 text-deep-muted">
             Prepaid Wi-Fi, home and office internet, and IT services in Juba, South Sudan.
@@ -41,7 +41,7 @@ export function Footer() {
         {linkGroups.map((group) => (
           <nav key={group.title} aria-label={group.title}>
             {/* Explicit colour: the global heading style would otherwise paint it dark on this dark footer. */}
-            <h2 className="text-base font-semibold text-deep-foreground">{group.title}</h2>
+            <h2 className="text-sm font-bold uppercase tracking-wide text-accent">{group.title}</h2>
             <ul className="mt-4 space-y-3 text-sm">
               {group.links.map((link) => (
                 <li key={link.href}>
@@ -55,7 +55,7 @@ export function Footer() {
         ))}
 
         <div>
-          <h2 className="text-base font-semibold text-deep-foreground">Contact</h2>
+          <h2 className="text-sm font-bold uppercase tracking-wide text-accent">Contact</h2>
           <ul className="mt-4 space-y-3 text-sm text-deep-muted">
             <li>
               <a href={`tel:+${siteConfig.contact.phone.replace(/\D/g, "")}`} className="hover:text-deep-foreground">
