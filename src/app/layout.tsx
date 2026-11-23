@@ -22,6 +22,8 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   applicationName: siteConfig.name,
+  // Google Search Console ownership of https://www.hotzonex.dev/ (the code is public by design).
+  verification: { google: "5zldfElnyTTP5dP7u2kvVuKQXwPRSrf-siaptB9RM1o" },
   // Inherited whole by every page that does not set its own openGraph, so nothing
   // page-specific (such as url) belongs here.
   openGraph: {
