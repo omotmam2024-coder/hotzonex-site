@@ -5,6 +5,8 @@ export const siteConfig = {
   description:
     "Hotzonex provides WiFi hotspots, home and office internet, Starlink installation and activation, MikroTik configuration and hotspot setup, network support, and website/software development in Juba, South Sudan.",
   url: "https://www.hotzonex.dev",
+  // Hotzonex Cloud, the company's own hotspot-management software (a separate site and app).
+  cloudUrl: "https://www.hotzonex.net",
   contact: {
     phone: "+211 924 904 216",
     email: "omotmam2024@gmail.com",
@@ -173,6 +175,29 @@ export const siteConfig = {
       cta: "Request a development quote",
       highlight: "Hotzonex also builds digital products for other businesses.",
       image: "developer" as Photo,
+    },
+    {
+      slug: "hotzonex-cloud-hotspot-software",
+      title: "Hotzonex Cloud: hotspot management software",
+      summary:
+        "Our own app for WiFi hotspot owners: make and sell MikroTik voucher cards, give every cashier and agent a login, and follow every SSP and every router from your phone.",
+      audience: "Hotspot owners and internet providers who sell WiFi vouchers with MikroTik routers, in Juba and across East Africa.",
+      included: [
+        "Sell a voucher card in one tap and print cards and receipts with your logo",
+        "Cashiers and agents with their own login, commission and credit limit",
+        "Sales reports by day, site, plan and seller, and who is online on each router",
+        "Customers can buy a card from their own phone and pay by mobile money",
+      ],
+      steps: [
+        "Open Hotzonex Cloud and start a free trial.",
+        "Connect your MikroTik router (RouterOS 7) through the secure tunnel.",
+        "Create your plans and start selling cards from any phone.",
+      ],
+      cta: "Open Hotzonex Cloud",
+      // Opens the Cloud site instead of the contact page.
+      externalUrl: "https://www.hotzonex.net",
+      highlight: "Built by Hotzonex and used in our own offices.",
+      image: "counter" as Photo,
     },
   ],
   // Voucher prices are not listed here: the pricing page reads them from the

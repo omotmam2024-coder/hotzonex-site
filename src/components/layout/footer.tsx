@@ -16,6 +16,7 @@ const linkGroups = [
     title: "Company",
     links: [
       { href: "/services", label: "Services" },
+      { href: siteConfig.cloudUrl, label: "Hotzonex Cloud (hotspot software)" },
       { href: "/about", label: "About" },
       { href: "/contact", label: "Contact" },
       { href: "/privacy", label: "Privacy" },
@@ -45,9 +46,15 @@ export function Footer() {
             <ul className="mt-4 space-y-3 text-sm">
               {group.links.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} prefetch={false} className="text-deep-muted hover:text-deep-foreground">
-                    {link.label}
-                  </Link>
+                  {link.href.startsWith("http") ? (
+                    <a href={link.href} className="text-deep-muted hover:text-deep-foreground">
+                      {link.label}
+                    </a>
+                  ) : (
+                    <Link href={link.href} prefetch={false} className="text-deep-muted hover:text-deep-foreground">
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
