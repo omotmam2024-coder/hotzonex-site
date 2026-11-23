@@ -6,7 +6,7 @@ import { siteConfig } from "@/config/site";
 import { officeAlt, officeImages } from "@/lib/office-images";
 
 export const metadata: Metadata = {
-  title: "Locations",
+  title: "WiFi Hotspot Locations in Juba",
   description:
     "Hotzonex Wi-Fi offices in Juba: Gorom Home Office, Jebel-Iraq Head Office and Jebel-Iraq Sub Office — opening hours, networks and voucher prices.",
 };

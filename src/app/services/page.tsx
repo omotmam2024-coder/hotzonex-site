@@ -7,7 +7,7 @@ import { officeAlt, officeImages } from "@/lib/office-images";
 import { photoAlt, photos } from "@/lib/photos";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "WiFi, Internet, Starlink & IT Services in Juba",
   description: "Explore Hotzonex services including hotspot vouchers, home and office internet, IT support, and website/software development.",
 };
 

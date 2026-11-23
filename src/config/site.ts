@@ -58,6 +58,7 @@ export const siteConfig = {
   services: [
     {
       slug: "wifi-hotspot-vouchers",
+      seoTitle: "WiFi Hotspot & Internet Vouchers in Juba, South Sudan",
       title: "WiFi hotspot & vouchers",
       summary:
         "Prepaid internet access for public hotspot visitors who need affordable connectivity without a long-term contract.",
@@ -78,6 +79,7 @@ export const siteConfig = {
     },
     {
       slug: "home-office-internet",
+      seoTitle: "Home & Office Internet in Juba, South Sudan",
       title: "Home & office internet",
       summary:
         "Dedicated connections for apartments, shops, and businesses that need stability, continuity, and straightforward support.",
@@ -98,6 +100,7 @@ export const siteConfig = {
     },
     {
       slug: "network-setup-it-support",
+      seoTitle: "Network Setup & IT Support in Juba, South Sudan",
       title: "Network setup & IT support",
       summary:
         "Practical network configuration, troubleshooting, and technical support for customers who need help with their existing setup.",
@@ -118,6 +121,7 @@ export const siteConfig = {
     },
     {
       slug: "starlink-installation-activation",
+      seoTitle: "Starlink Installation & Activation in Juba, South Sudan",
       title: "Professional Starlink installation & activation",
       summary:
         "End-to-end Starlink setup for households, offices, and remote locations that need reliable satellite internet with professional activation. Please contact the Head Office for the current quote and configuration details.",
@@ -138,6 +142,7 @@ export const siteConfig = {
     },
     {
       slug: "mikrotik-configuration-hotspot",
+      seoTitle: "MikroTik Configuration & Hotspot Setup in Juba, South Sudan",
       title: "MikroTik configuration & hotspot",
       summary:
         "Router and hotspot configuration services for customers who need secure, well-managed public or private network access. Please contact the Head Office for the current configuration and pricing details.",
@@ -158,6 +163,7 @@ export const siteConfig = {
     },
     {
       slug: "website-software-development",
+      seoTitle: "Website & Software Development in Juba, South Sudan",
       title: "Website & software development",
       summary:
         "Custom websites and software solutions that help local businesses present themselves professionally and operate more efficiently.",
@@ -178,6 +184,7 @@ export const siteConfig = {
     },
     {
       slug: "hotzonex-cloud-hotspot-software",
+      seoTitle: "Hotzonex Cloud: WiFi Hotspot Billing & Voucher Software for MikroTik",
       title: "Hotzonex Cloud: hotspot management software",
       summary:
         "Our own app for WiFi hotspot owners: make and sell MikroTik voucher cards, give every cashier and agent a login, and follow every SSP and every router from your phone.",

@@ -17,7 +17,8 @@ const displayFont = Bricolage_Grotesque({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: siteConfig.name,
+    // The home page's title: the words people type into Google, not just the brand.
+    default: `${siteConfig.name} — WiFi Hotspot, Internet & Starlink in Juba, South Sudan`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -32,13 +33,25 @@ export const metadata: Metadata = {
     locale: "en_US",
   },
   twitter: { card: "summary_large_image" },
+  // Google ignores this list (it reads titles, descriptions and page text); Bing and others may use it.
   keywords: [
     "Hotzonex",
-    "Juba South Sudan",
-    "WiFi hotspot",
-    "home internet",
-    "IT support",
-    "web development",
+    "WiFi Juba",
+    "WiFi hotspot Juba",
+    "WiFi vouchers South Sudan",
+    "internet vouchers Juba",
+    "internet provider South Sudan",
+    "internet service provider Juba",
+    "home internet Juba",
+    "office internet Juba",
+    "Starlink installation South Sudan",
+    "Starlink activation Juba",
+    "MikroTik hotspot setup",
+    "MikroTik configuration Juba",
+    "hotspot billing software",
+    "network installation Juba",
+    "IT support Juba",
+    "website development South Sudan",
   ],
 };
 
@@ -57,6 +70,23 @@ const organizationJsonLd = {
   email: siteConfig.contact.email,
   telephone: siteConfig.contact.phone,
   address: { "@type": "PostalAddress", addressLocality: "Juba", addressCountry: "SS" },
+  areaServed: [
+    { "@type": "City", name: "Juba" },
+    { "@type": "Country", name: "South Sudan" },
+  ],
+  // What the company does, in the words people search with.
+  knowsAbout: [
+    "WiFi hotspots",
+    "WiFi vouchers",
+    "Internet service",
+    "Home and office internet",
+    "Starlink installation and activation",
+    "MikroTik routers and hotspot setup",
+    "Hotspot billing software",
+    "Computer networking",
+    "IT support",
+    "Website and software development",
+  ],
   // The company's own software product, described in full on its own site.
   makesOffer: {
     "@type": "Offer",

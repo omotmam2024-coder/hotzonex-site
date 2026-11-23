@@ -20,7 +20,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   return {
-    title: service.title,
+    // The page's own heading stays short; Google gets the searchable version with the place in it.
+    title: service.seoTitle,
     description: service.summary,
   };
 }

@@ -8,7 +8,7 @@ import { guideChunks, priceTables } from "@/lib/guide";
 import { photoAlt, photos } from "@/lib/photos";
 
 export const metadata: Metadata = {
-  title: "Pricing",
+  title: "WiFi Voucher Prices in Juba",
   description:
     "Hotzonex Wi-Fi voucher prices for Gorom Home Office, Jebel-Iraq Head Office and Jebel-Iraq Sub Office, plus quotes for installation, support and development work.",
 };
