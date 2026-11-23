@@ -22,6 +22,8 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   applicationName: siteConfig.name,
+  // Google Search Console ownership of https://www.hotzonex.dev/ (the code is public by design).
+  verification: { google: "5zldfElnyTTP5dP7u2kvVuKQXwPRSrf-siaptB9RM1o" },
   // Inherited whole by every page that does not set its own openGraph, so nothing
   // page-specific (such as url) belongs here.
   openGraph: {
@@ -40,16 +42,33 @@ export const metadata: Metadata = {
   ],
 };
 
-/** Tells search engines who runs the site and which image is the company logo. */
+/**
+ * Tells search engines who runs the site and which image is the company logo. The @id is the
+ * company's one name on the web: Hotzonex Cloud (hotzonex.net) names this same @id as its
+ * publisher, so Google sees one business behind both sites.
+ */
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": `${siteConfig.url}/#organization`,
   name: siteConfig.name,
   url: siteConfig.url,
   logo: `${siteConfig.url}/brand/hotzonex-logo-512.png`,
   email: siteConfig.contact.email,
   telephone: siteConfig.contact.phone,
   address: { "@type": "PostalAddress", addressLocality: "Juba", addressCountry: "SS" },
+  // The company's own software product, described in full on its own site.
+  makesOffer: {
+    "@type": "Offer",
+    itemOffered: {
+      "@type": "SoftwareApplication",
+      "@id": `${siteConfig.cloudUrl}/#software`,
+      name: "Hotzonex Cloud",
+      url: `${siteConfig.cloudUrl}/`,
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web, Android, iOS",
+    },
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

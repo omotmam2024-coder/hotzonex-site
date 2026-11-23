@@ -86,7 +86,11 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild>
-                <Link href="/contact">{service.cta}</Link>
+                {service.externalUrl ? (
+                  <a href={service.externalUrl}>{service.cta}</a>
+                ) : (
+                  <Link href="/contact">{service.cta}</Link>
+                )}
               </Button>
               <Button variant="outline" asChild>
                 <Link href="/services">Back to services</Link>
