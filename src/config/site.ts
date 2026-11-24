@@ -9,7 +9,7 @@ export const siteConfig = {
   cloudUrl: "https://www.hotzonex.net",
   contact: {
     phone: "+211 924 904 216",
-    email: "omotmam2024@gmail.com",
+    email: "info@hotzonex.net",
     whatsapp: "+211 924 904 216",
     address: "Juba, South Sudan",
     hours: "Daily, during office hours",
